@@ -8,6 +8,7 @@ import SignUpPage from './components/signup/signup';
 import CreateRequest from './components/create-requests/CreateRequest';
 import ViewPost from './components/view-post/ViewPost';
 import MyRequests from './components/requests/MyRequests';
+import ViewOwnPost from './components/view-post/ViewOwnPost';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/create-requests" element={<CreateRequest />} />
           <Route path="/view-post" element={<ViewPost />} />
           <Route path="/my-requests" element={<MyRequests />} />
+          <Route path="/view-own-post" element={<ViewOwnPost />} />
         </Routes>
       </Router>
     </div>
