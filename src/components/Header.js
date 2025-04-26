@@ -1,8 +1,14 @@
 import '../styles/Header.css';
 import Logo from '../assets/logo.png';
 import Profile from '../assets/profile.png';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const navigate = useNavigate();
+
+  const handleProfileClick = () => { navigate('/profile');};
+  const handleCreateRequestClick = () => { navigate('/create-requests');};
+
   return (
     <div className="header">
       <div className="header-left">
@@ -12,9 +18,17 @@ function Header() {
 
       <div className="header-right">
         <h1 className="my-requests">My Requests</h1>
-        <i class="header-icon fa-solid fa-circle-plus"></i>
+        <i
+          class="header-icon fa-solid fa-circle-plus"
+          onClick={handleCreateRequestClick}>
+        </i>
         <i class="header-icon fa-solid fa-message"></i>
-        <img src={Profile} alt="Profile" className="profile-icon header-img" />
+        <img
+          src={Profile}
+          alt="Profile"
+          className="profile-icon header-img"
+          onClick={handleProfileClick}
+        />
       </div>
     </div>
   );
