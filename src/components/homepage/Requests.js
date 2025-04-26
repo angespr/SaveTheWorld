@@ -1,5 +1,6 @@
 import '../../styles/homepage/Requests.css';
 import Thumbnail from './Thumbnail';
+import thumbnail_img from '../../assets/thumbnail.png';
 import { useState, useEffect, useRef } from 'react';
 
 function Requests() {
@@ -14,7 +15,7 @@ function Requests() {
 
     const newItems = Array.from({ length: 10 }, (_, idx) => ({
       id: (pageNum - 1) * 10 + idx + 1,
-      image: '/images/placeholder.png', // replace with your real logic
+      image: thumbnail_img, // replace with your real logic
       title: `Request ${ (pageNum - 1) * 10 + idx + 1 }`,
       url: `/request/${ (pageNum - 1) * 10 + idx + 1 }`,
     }));
