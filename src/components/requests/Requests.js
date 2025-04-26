@@ -1,9 +1,9 @@
-import '../../styles/homepage/Requests.css';
-import Thumbnail from './Thumbnail';
+import '../../styles/requests/Requests.css';
+import Thumbnail from '../homepage/Thumbnail';
 import thumbnail_img from '../../assets/thumbnail.png';
 import { useState, useEffect, useRef } from 'react';
 
-function Requests() {
+function Requests({ header }) {
   const [requests, setRequests] = useState([]);
   const [page, setPage] = useState(1);
   const loader = useRef(null);
@@ -47,7 +47,7 @@ function Requests() {
 
   return (
     <div className="requests-container">
-      <h2>All Requests</h2>
+      <h2>{header}</h2>
       <div className="requests-grid">
         {requests.map(item => (
           <Thumbnail

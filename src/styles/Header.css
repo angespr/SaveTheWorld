@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   height: 75px;
+  width: 100vw;
   background-color: #0e2528;
   align-items: center;
 }
