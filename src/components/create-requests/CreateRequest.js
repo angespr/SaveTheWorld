@@ -30,7 +30,7 @@ function CreateRequest() {
       offerDescription: exchangeOffer,
       expectedValue: parseFloat(expectedValue) || 0,
       category: requestCategory,
-      userId: "demo-user" // you can change this later
+      userId: "demo-user" 
     };
 
     try {

@@ -21,6 +21,7 @@ function Homepage() {
 
     fetchRequests();
   }, []);
+
   return (
     <div className="homepage">
       <Header />
@@ -30,4 +31,5 @@ function Homepage() {
     </div>
   );
 }
+
 export default Homepage;
