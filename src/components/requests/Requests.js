@@ -1,11 +1,9 @@
 import '../../styles/requests/Requests.css';
 import Thumbnail from '../homepage/Thumbnail';
-import thumbnail_img from '../../assets/thumbnail.png'; // fallback image if needed
 import { useState, useEffect, useRef } from 'react';
 
 function Requests({ header, toggleable = false }) {
   const [requests, setRequests] = useState([]);
-  const [page, setPage] = useState(1);
   const [visible, setVisible] = useState(true);
   const loader = useRef(null);
 
