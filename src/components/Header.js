@@ -19,10 +19,10 @@ function Header() {
       <div className="header-right">
         <h1 className="my-requests">My Requests</h1>
         <i
-          class="header-icon fa-solid fa-circle-plus"
+          className="header-icon fa-solid fa-circle-plus"
           onClick={handleCreateRequestClick}>
         </i>
-        <i class="header-icon fa-solid fa-message"></i>
+        <i className="header-icon fa-solid fa-message"></i>
         <img
           src={Profile}
           alt="Profile"

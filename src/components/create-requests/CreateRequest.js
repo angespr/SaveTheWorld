@@ -1,6 +1,7 @@
 import '../../styles/create-requests/CreateRequest.css';
 import Header from '../Header';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // 🚀 Added this!
 
 function CreateRequest() {
   /* form states */
@@ -11,23 +12,58 @@ function CreateRequest() {
   const [expectedValue, setExpectedValue] = useState('');
   const [images, setImages] = useState([]);
 
-  /*image upload */
+  const navigate = useNavigate(); // 🚀 Added this!
+
+  /* image upload */
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     setImages(files);
   };
 
-  /*form submit */
-  const handleSubmit = (e) => {
+  /* form submit */
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Request Submitted:', {
-      requestTitle,
-      requestDescription,
-      exchangeOffer,
-      requestCategory,
-      expectedValue,
-      images,
-    });
+
+    const payload = {
+      title: requestTitle,
+      requestDescription: requestDescription,
+      offerDescription: exchangeOffer,
+      expectedValue: parseFloat(expectedValue) || 0,
+      category: requestCategory,
+      userId: "demo-user" // you can change this later
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080/api/requests', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        const message = await response.text();
+        alert("Listing posted successfully! 🎉");
+        console.log(message);
+
+        // Reset form
+        setRequestTitle('');
+        setRequestDescription('');
+        setExchangeOffer('');
+        setRequestCategory('General');
+        setExpectedValue('');
+        setImages([]);
+
+        // 🚀 Redirect to homepage
+        navigate('/');
+      } else {
+        alert("Failed to post listing ❌");
+        console.error(await response.text());
+      }
+    } catch (err) {
+      console.error("Error posting listing:", err);
+    }
   };
 
   return (
@@ -82,6 +118,7 @@ function CreateRequest() {
               step="1"
             />
           </div>
+
           <div className="form-group">
             <label htmlFor="category">Offer Category:</label>
             <select
@@ -117,6 +154,7 @@ function CreateRequest() {
               ))}
             </div>
           </div>
+
           <button type="submit" className="submit-btn">Submit Listing</button>
         </form>
       </div>
