@@ -2,8 +2,8 @@ import '../../styles/homepage/Homepage.css';
 import Header from '../Header';
 import SearchBar from './SearchBar';
 import Recommended from './Recommended';
-import Requests from './Requests';
-import React, { useState, useEffect } from 'react';
+import Requests from '../requests/Requests';
+import React from 'react';
 
 function Homepage() {
   const [requests, setRequests] = useState([]);
@@ -26,7 +26,7 @@ function Homepage() {
       <Header />
       <SearchBar />
       <Recommended />
-      <Requests />
+      <Requests header="All Requests"/>
     </div>
   );
 }

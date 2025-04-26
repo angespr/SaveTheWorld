@@ -1,19 +1,21 @@
 import '../styles/Header.css';
 import Logo from '../assets/logo.png';
+import MyRequests from './requests/MyRequests';
+import Chat from './chat/Chat';
 import Profile from '../assets/profile.png';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Chat from './chat/Chat';
 
 function Header() {
   const navigate = useNavigate();
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  const handleProfileClick = () => { navigate('/profile'); };
-  const handleCreateRequestClick = () => { navigate('/create-requests'); };
   const handleLogoClick = () => { navigate('/'); };
+  const handleMyRequestsClick = () => { navigate('/my-requests'); };
+  const handleCreateRequestClick = () => { navigate('/create-requests'); };
   const handleChatClick = () => { setIsChatOpen(true); };
   const handleChatClose = () => { setIsChatOpen(false); };
+  const handleProfileClick = () => { navigate('/profile'); };
 
   return (
     <div className="header">
@@ -33,7 +35,12 @@ function Header() {
       </div>
 
       <div className="header-right">
-        <h1 className="my-requests">My Requests</h1>
+        <h1
+          className="my-requests"
+          onClick={handleMyRequestsClick}
+        >
+          My Requests
+        </h1>
         <i
           class="header-icon fa-solid fa-circle-plus"
           onClick={handleCreateRequestClick}>
