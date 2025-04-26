@@ -1,15 +1,15 @@
 import '../../styles/homepage/Recommended.css';
 import Thumbnail from './Thumbnail';
-import One from '../../assets/Recommended/1.png';
-import Two from '../../assets/Recommended/2.png';
-import Three from '../../assets/Recommended/3.png';
-import Four from '../../assets/Recommended/4.png';
-import Five from '../../assets/Recommended/5.png';
-import Six from '../../assets/Recommended/6.png';
-import Seven from '../../assets/Recommended/7.png';
-import Eight from '../../assets/Recommended/8.png';
-import Nine from '../../assets/Recommended/9.png';
-import Ten from '../../assets/Recommended/10.png';
+import One from '../../assets/recommended-thumbnails/1.png';
+import Two from '../../assets/recommended-thumbnails/2.png';
+import Three from '../../assets/recommended-thumbnails/3.png';
+import Four from '../../assets/recommended-thumbnails/4.png';
+import Five from '../../assets/recommended-thumbnails/5.png';
+import Six from '../../assets/recommended-thumbnails/6.png';
+import Seven from '../../assets/recommended-thumbnails/7.png';
+import Eight from '../../assets/recommended-thumbnails/8.png';
+import Nine from '../../assets/recommended-thumbnails/9.png';
+import Ten from '../../assets/recommended-thumbnails/10.png';
 
 function Recommended() {
   const recommendedItems = [
