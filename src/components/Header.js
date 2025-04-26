@@ -6,14 +6,25 @@ import { useNavigate } from 'react-router-dom';
 function Header() {
   const navigate = useNavigate();
 
-  const handleProfileClick = () => { navigate('/profile');};
-  const handleCreateRequestClick = () => { navigate('/create-requests');};
+  const handleProfileClick = () => { navigate('/profile'); };
+  const handleCreateRequestClick = () => { navigate('/create-request'); };
+  const handleLogoClick = () => { navigate('/'); };
 
   return (
     <div className="header">
       <div className="header-left">
-        <img src={Logo} alt="Logo" className="logo header-img" />
-        <h1 className="header-title">juvo</h1>
+        <img
+          src={Logo}
+          alt="Logo"
+          className="logo header-img"
+          onClick={handleLogoClick}
+        />
+        <h1
+          className="header-title"
+          onClick={handleLogoClick}
+        >
+          juvo
+        </h1>
       </div>
 
       <div className="header-right">
