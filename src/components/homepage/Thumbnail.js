@@ -6,10 +6,12 @@ function Thumbnail({ image, title, url }) {
 
   const handleThumbnailClick = () => { navigate(url); };
   return (
-    <div className="thumbnail"
-      onClick={handleThumbnailClick}
-    >
-      <img src={image} alt={title} />
+    <div className="thumbnail">
+      <img
+        src={image}
+        alt={title}
+        onClick={handleThumbnailClick}
+      />
       <h3>{title}</h3>
     </div>
   );
