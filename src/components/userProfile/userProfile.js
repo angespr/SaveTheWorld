@@ -10,9 +10,9 @@ export default function UserProfile() {
   };
 
   const images = [
-    { src: "https://media.glamour.com/photos/6801386a77591b9b0b66728b/1:1/w_1440,h_1440,c_limit/MixCollage-17-Apr-2025-01-20-PM-6718.jpg", link: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.glamour.com%2Fgallery%2Fbest-trending-nail-designs&psig=AOvVaw2VSGKZxsUjiknZ9TVzcnWa&ust=1745733321732000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjgusaB9YwDFQAAAAAdAAAAABAd" },
-    { src: "https://maniology.com/cdn/shop/articles/Frenchy_Spring_stamping_bundle_by_jbunny_dips_d07c52dc-679c-4435-a153-f07cfe28931f_1024x1024.png?v=1744478173", link: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fmaniology.com%2Fblogs%2Fmaniology-blog%2Fnatural-looking-nail-designs&psig=AOvVaw2VSGKZxsUjiknZ9TVzcnWa&ust=1745733321732000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjgusaB9YwDFQAAAAAdAAAAABAT" },
-    { src: "https://www.realsimple.com/thmb/sS8oyzSufgOE7CYzIh1GEGhqd2Y=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/nail-trends-big-in-2025-e9e6e2fdc2c4466da0f0d701d4c5c988.jpg", link: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.realsimple.com%2F2025-nail-trends-8770806&psig=AOvVaw0SavpBu0iQkdgqEY-L_xdz&ust=1745733740524000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOj8oI6D9YwDFQAAAAAdAAAAABAO" },
+    { src: "https://media.glamour.com/photos/6801386a77591b9b0b66728b/1:1/w_1440,h_1440,c_limit/MixCollage-17-Apr-2025-01-20-PM-6718.jpg", link: "https://www.glamour.com/gallery/best-trending-nail-designs" },
+    { src: "https://maniology.com/cdn/shop/articles/Frenchy_Spring_stamping_bundle_by_jbunny_dips_d07c52dc-679c-4435-a153-f07cfe28931f_1024x1024.png?v=1744478173", link: "https://maniology.com/blogs/maniology-blog/natural-looking-nail-designs" },
+    { src: "https://www.realsimple.com/thmb/sS8oyzSufgOE7CYzIh1GEGhqd2Y=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/nail-trends-big-in-2025-e9e6e2fdc2c4466da0f0d701d4c5c988.jpg", link: "https://www.realsimple.com/2025-nail-trends-8770806" },
   ];
 
   const carouselRef = useRef(null);
@@ -28,19 +28,17 @@ export default function UserProfile() {
   };
 
   return (
-    
-    <div style={{ backgroundColor: '#F5E9E2',
-      minHeight: '100vh',margin: 0, padding: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start'}}>
-            <Header />
+    <div style={{ backgroundColor: '#F5E9E2', minHeight: '100vh', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+      <Header />
 
       <div style={styles.container}>
-        <img src={profileImage} alt="My Profile" style={styles.avatar} /> {/* Using the imported image */}
-        <div style={styles.textContainer}>
-          <div style={styles.nameTalentContainer}>
+        <div style={styles.profileSection}>
+          <img src={profileImage} alt="My Profile" style={styles.avatar} />
+          <div style={styles.nameTalentStack}>
             <h2 style={styles.name}>{user.name}</h2>
-            <div style={styles.add2}>Add talent +</div>
+            <h1 style={styles.talent}>{user.talent}</h1>
           </div>
-          <div><h1 style={styles.talent}>{user.talent}</h1></div>
+          <button style={styles.add2} onClick={() => alert('Add talent clicked')}>Add talent +</button>
         </div>
         <div style={styles.info}>
           <p style={styles.description}>{user.description}</p>
@@ -51,7 +49,7 @@ export default function UserProfile() {
         <div style={styles.info}>
           <div style={styles.nameTalentContainer}>
             <h1 style={styles.name}>My Gallery</h1>
-            <div style={styles.add3}> Add photo +</div>
+            <button style={styles.add3} onClick={() => alert('Add photo clicked')}>Add photo +</button>
           </div>
           <p>Check out my work!</p>
           <div style={styles.carouselWrapper}>
@@ -74,12 +72,11 @@ export default function UserProfile() {
         <div style={styles.info}>
           <div style={styles.tradePreferencesHeader}>
             <h2 style={styles.name}>Trade Preferences</h2>
-            <button style={styles.add}>Add Preference +</button>
+            <button style={styles.add} onClick={() => alert('Add preference clicked')}>Add Preference +</button>
           </div>
-          <button style={styles.button}>Getting a Tattoo</button>
+          <button style={styles.button}>Tattoo</button>
           <button style={styles.button}>Lawn Work</button>
           <button style={styles.button}>Haircut</button>
-          <button style={styles.button}>Lawn Work</button>
         </div>
       </div>
     </div>
@@ -87,9 +84,6 @@ export default function UserProfile() {
 }
 
 const styles = {
-  pageBackground: {
-    backgroundColor: '#F5E9E2',
-  },
   container: {
     display: 'flex',
     flexDirection: 'row',
@@ -103,6 +97,13 @@ const styles = {
     backgroundColor: 'white',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
   },
+  profileSection: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    width: '100%',
+  },
   avatar: {
     width: '100px',
     height: '100px',
@@ -111,24 +112,19 @@ const styles = {
     marginRight: '15px',
     padding: '5px',
   },
-  textContainer: {
+  nameTalentStack: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
     gap: '5px',
-  },
-  nameTalentContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
   },
   info: {
     flex: 1,
     minWidth: '100%',
+    marginTop: '10px'
   },
   name: {
     fontSize: '1.5rem',
-    marginBottom: '5px',
+    marginBottom: '2px',
   },
   talent: {
     fontSize: '14px',
@@ -136,10 +132,8 @@ const styles = {
     border: '1px solid #A52A2A',
     backgroundColor: '#fff',
     color: '#A52A2A',
-    padding: '5px',
-    paddingLeft: '6px',
-    textAlign: 'center',
-    width: '100px'
+    padding: '4px 8px',
+    width: 'fit-content'
   },
   description: {
     margin: 0,
@@ -147,7 +141,7 @@ const styles = {
     backgroundColor: '#fff',
     borderRadius: '6px',
     boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.1)',
-    color: '#333'
+    color: '#333',
   },
   carouselWrapper: {
     display: 'flex',
@@ -199,17 +193,14 @@ const styles = {
     marginBottom: '10px',
   },
   add: {
-    display: 'flex',
     backgroundColor: '#6A8D92',
     color: '#fff',
     border: 'none',
     borderRadius: '50px',
     cursor: 'pointer',
     fontSize: '16px',
-    paddingLeft: '25px',
-    paddingRight: '30px',
-    padding: '10px',
-    marginLeft: '640px'
+    padding: '10px 20px',
+    marginLeft: '550px'
   },
   tradePreferencesHeader: {
     display: 'flex',
@@ -218,27 +209,23 @@ const styles = {
     marginBottom: '10px',
   },
   add2: {
-    display: 'flex',
     fontSize: '14px',
     borderRadius: '50px',
     border: '2px solid #A52A2A',
     backgroundColor: '#fff',
     color: '#A52A2A',
-    padding: '5px',
-    paddingLeft: '10px',
-    textAlign: 'center',
-    marginLeft: '670px',
+    padding: '5px 5px',
+    marginLeft: 'auto',
+    cursor: 'pointer'
   },
   add3: {
-    color: '#1B0E14',
-    display: 'flex',
     fontSize: '14px',
     borderRadius: '50px',
     border: '2px solid #1B0E14',
     backgroundColor: '#fff',
-    padding: '5px',
-    paddingLeft: '10px',
-    textAlign: 'center',
-    marginLeft: '760px',
+    color: '#1B0E14',
+    padding: '5px 12px',
+    marginLeft: '850px',
+    cursor: 'pointer'
   },
 };
