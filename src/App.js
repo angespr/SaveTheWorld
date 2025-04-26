@@ -3,6 +3,7 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from './components/homepage/Homepage';
 import UserProfile from './components/userProfile/userProfile';
+import CreateRequest from './components/create-requests/CreateRequest';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/create-requests" element={<CreateRequest />} />
         </Routes>
       </Router>
     </div>
