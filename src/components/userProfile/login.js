@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../../styles/login/login.css';
+import '../../styles/userProfile/Login.css';
 import logo from '../../assets/logo.png';
 
-const LoginPage = () => {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -43,4 +43,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
