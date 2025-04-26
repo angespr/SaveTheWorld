@@ -2,7 +2,7 @@ import '../../styles/homepage/Homepage.css';
 import Header from '../Header';
 import SearchBar from './SearchBar';
 import Recommended from './Recommended';
-import CreateRequest from '../create-requests/CreateRequest';
+import Requests from '../requests/Requests';
 import React, { useState, useEffect } from 'react';
 
 function Homepage() {
@@ -26,7 +26,7 @@ function Homepage() {
       <Header />
       <SearchBar />
       <Recommended />
-      <CreateRequest header="All Requests"/>
+      <Requests header="All Requests"/>
     </div>
   );
 }
