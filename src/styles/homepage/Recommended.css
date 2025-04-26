@@ -1,0 +1,36 @@
+.recommended-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 20px;
+  overflow-x: auto;
+  color: #1b0e14;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.recommended-thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.recommended-thumbnails::-webkit-scrollbar {
+  height: 8px;
+}
+
+.recommended-thumbnails::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.recommended-thumbnails::-webkit-scrollbar-thumb {
+  background: #6a8d92;
+  border-radius: 4px;
+}
+
+.recommended-thumbnails::-webkit-scrollbar-thumb:hover {
+  background: #4d676a;
+}
