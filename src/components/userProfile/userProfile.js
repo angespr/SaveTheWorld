@@ -34,7 +34,7 @@ export default function UserProfile() {
             <Header />
 
       <div style={styles.container}>
-        <img src={profileImage} alt="My Profile" style={styles.avatar} /> {/* Using the imported image */}
+        <img src={profileImage} alt="My Profile" style={styles.avatar} /> {}
         <div style={styles.textContainer}>
           <div style={styles.nameTalentContainer}>
             <h2 style={styles.name}>{user.name}</h2>
