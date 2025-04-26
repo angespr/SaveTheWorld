@@ -3,7 +3,7 @@ import Header from '../Header';
 import React, { useState } from 'react';
 
 function ViewPost() {
-  // find images for this
+  // find images for this!!
   const [galleryImages, setGalleryImages] = useState([
     'https://via.placeholder.com/150',
     'https://via.placeholder.com/150',
