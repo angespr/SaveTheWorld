@@ -1,7 +1,7 @@
 import '../../styles/create-requests/CreateRequest.css';
 import Header from '../Header';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // 🚀 Added this!
+import { useNavigate } from 'react-router-dom'; 
 
 function CreateRequest() {
   /* form states */
@@ -12,7 +12,7 @@ function CreateRequest() {
   const [expectedValue, setExpectedValue] = useState('');
   const [images, setImages] = useState([]);
 
-  const navigate = useNavigate(); // 🚀 Added this!
+  const navigate = useNavigate(); 
 
   /* image upload */
   const handleImageChange = (e) => {
@@ -55,7 +55,7 @@ function CreateRequest() {
         setExpectedValue('');
         setImages([]);
 
-        // 🚀 Redirect to homepage
+        // Redirect to homepage
         navigate('/');
       } else {
         alert("Failed to post listing ❌");
