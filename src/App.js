@@ -6,7 +6,6 @@ import UserProfile from './components/userProfile/userProfile';
 import Login from './components/login/login';
 import SignUpPage from './components/signup/signup';
 // import create-request
-=======
 import CreateRequest from './components/create-requests/CreateRequest';
 import ViewPost from './components/view-post/ViewPost';
 import MyRequests from './components/requests/MyRequests';
