@@ -2,9 +2,8 @@ import '../../styles/view-post/ViewPost.css';
 import Header from '../Header';
 import React, { useState } from 'react';
 
-function ViewPost() {
-  /* gallery images for the post */
-  const [galleryImages, setGalleryImages] = useState([
+function ViewOwnPost() {
+  const [galleryImages] = useState([
     '/test_hair1.jpg',
     '/test_hair2.jpg',
     '/test_hair3.jpg',
@@ -14,15 +13,15 @@ function ViewPost() {
     <div className="view-post">
       <Header />
       <div className="view-post-container">
-        <h2 className="post-title">Need tutoring service for my child</h2>
+        <h2 className="post-title">Request Title</h2>
         <p className="post-description">
-          Hello! I'm a single mother and need tutoring services for my 6-year-old son. He's been having trouble with his reading comprehension and I'm just too busy with other work to help him...
+          This is the description of the request. It explains what the requester is asking for in detail.
         </p>
-        <p className="post-user">by Jennifer</p>
+        <p className="post-user">by You</p>
 
         <h3 className="section-header">My Offer:</h3>
         <p className="offer-description">
-        I'm a full-time hairdresser and specialize in highlights and layered cuts! I have a base price for a haircut and how long they'll take, as well as charge extra for coloring.
+          This is the description of the service or product you are offering in return.
         </p>
 
         <h3 className="section-header">Gallery:</h3>
@@ -36,12 +35,15 @@ function ViewPost() {
         <div className="category-tag">Beauty</div>
 
         <h3 className="section-header">Estimated Monetary Value:</h3>
-        <div className="monetary-value">$40</div>
+        <div className="monetary-value">$50</div>
 
-        <button className="submit-btn">Make an Offer</button>
+        <div className="own-post-buttons">
+          <button className="submit-btn">Update Request</button>
+          <button className="delete-btn">Delete Request</button>
+        </div>
       </div>
     </div>
   );
 }
 
-export default ViewPost;
+export default ViewOwnPost;
