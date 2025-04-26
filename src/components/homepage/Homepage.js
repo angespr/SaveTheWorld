@@ -27,7 +27,7 @@ function Homepage() {
       <Header />
       <SearchBar />
       <Recommended />
-      <Requests header="All Requests" />
+      <Requests header="All Requests"/>
     </div>
   );
 }

@@ -45,7 +45,10 @@ function Header() {
           class="header-icon fa-solid fa-circle-plus"
           onClick={handleCreateRequestClick}>
         </i>
-        <i class="header-icon fa-solid fa-message"></i>
+        <i
+          class="header-icon fa-solid fa-message"
+          onClick={handleChatClick}>
+        </i>
         <img
           src={Profile}
           alt="Profile"
@@ -53,8 +56,6 @@ function Header() {
           onClick={handleProfileClick}
         />
       </div>
-
-      {/* Chat Sidebar */}
       <Chat isOpen={isChatOpen} onClose={handleChatClose} />
     </div>
   );
