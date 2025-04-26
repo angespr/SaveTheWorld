@@ -32,3 +32,12 @@ body, html {
   font-size: 18px;
   color: #888;
 }
+
+.requests-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.requests-header h2 {
+  margin: 0;
+}

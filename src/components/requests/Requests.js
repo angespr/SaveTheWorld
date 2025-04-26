@@ -3,29 +3,24 @@ import Thumbnail from '../homepage/Thumbnail';
 import thumbnail_img from '../../assets/thumbnail.png';
 import { useState, useEffect, useRef } from 'react';
 
-function Requests({ header }) {
+function Requests({ header, toggleable = false }) {   // ⬅️ New prop
   const [requests, setRequests] = useState([]);
   const [page, setPage] = useState(1);
+  const [visible, setVisible] = useState(true); // ⬅️ control showing/hiding
   const loader = useRef(null);
 
-  // TODO Simulate fetching data from database, need to replace with actual API call
   const fetchRequests = async (pageNum) => {
-    // Simulate database fetch with timeout
-    await new Promise((resolve) => setTimeout(resolve, 1000)); 
-
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const newItems = Array.from({ length: 10 }, (_, idx) => ({
       id: (pageNum - 1) * 10 + idx + 1,
-      image: thumbnail_img, // replace with your real logic
-      title: `Request ${ (pageNum - 1) * 10 + idx + 1 }`,
-      url: `/request/${ (pageNum - 1) * 10 + idx + 1 }`,
+      image: thumbnail_img,
+      title: `Request ${(pageNum - 1) * 10 + idx + 1}`,
+      url: `/request/${(pageNum - 1) * 10 + idx + 1}`,
     }));
-
     setRequests(prev => [...prev, ...newItems]);
   };
 
-  useEffect(() => {
-    fetchRequests(page);
-  }, [page]);
+  useEffect(() => { fetchRequests(page); }, [page]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
@@ -37,7 +32,6 @@ function Requests({ header }) {
     if (loader.current) {
       observer.observe(loader.current);
     }
-
     return () => {
       if (loader.current) {
         observer.unobserve(loader.current);
@@ -45,20 +39,35 @@ function Requests({ header }) {
     };
   }, []);
 
+  const handleToggle = () => {
+    setVisible(prev => !prev);
+  };
+
   return (
     <div className="requests-container">
-      <h2>{header}</h2>
-      <div className="requests-grid">
-        {requests.map(item => (
-          <Thumbnail
-            key={item.id}
-            image={item.image}
-            title={item.title}
-            url={item.url}
-          />
-        ))}
+      <div className="requests-header" onClick={toggleable ? handleToggle : undefined}>
+        <h2>{header}</h2>
+        {toggleable && (
+          <i
+            className={`fa-solid fa-caret-${visible ? 'down' : 'right'}`}
+            style={{ cursor: 'pointer', marginLeft: '10px' }}
+          ></i>
+        )}
       </div>
-      <div ref={loader} className="loading">Loading...</div>
+
+      {visible && (
+        <div className="requests-grid">
+          {requests.map(item => (
+            <Thumbnail
+              key={item.id}
+              image={item.image}
+              title={item.title}
+              url={item.url}
+            />
+          ))}
+        </div>
+      )}
+      {visible && <div ref={loader} className="loading">Loading...</div>}
     </div>
   );
 }
