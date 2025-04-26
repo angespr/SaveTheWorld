@@ -4,11 +4,14 @@ import Requests from './Requests';
 
 function MyRequests() {
   return (
-    <div className="my-requests">
+    <div className="my-requests-wrapper">
       <Header />
-      <Requests header="Active Requests" />
-      <Requests header="Completed Requests" />
+      <div className="my-requests-content">
+        <Requests header="Active Requests" toggleable />
+        <Requests header="Completed Requests" toggleable />
+      </div>
     </div>
   );
 }
+
 export default MyRequests;

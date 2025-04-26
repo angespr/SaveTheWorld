@@ -1,0 +1,4 @@
+.my-requests-content {
+  display: flex;
+  flex-direction: column;
+}
