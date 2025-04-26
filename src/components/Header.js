@@ -9,7 +9,13 @@ function Header() {
         <img src={Logo} alt="Logo" className="logo header-img" />
         <h1 className="header-title">juvo</h1>
       </div>
-      <img src={Profile} alt="Profile" className="profile-icon header-img" />
+
+      <div className="header-right">
+        <h1 className="my-requests">My Requests</h1>
+        <i class="header-icon fa-solid fa-circle-plus"></i>
+        <i class="header-icon fa-solid fa-message"></i>
+        <img src={Profile} alt="Profile" className="profile-icon header-img" />
+      </div>
     </div>
   );
 }
