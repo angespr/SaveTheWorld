@@ -12,7 +12,7 @@ import Nine from '../../assets/recommended-thumbnails/9.png';
 import Ten from '../../assets/recommended-thumbnails/10.png';
 
 function Recommended() {
-  const recommendedItems = [
+  const recommendedItems = [ /* TODO pull from DB instead */
     { id: 1, image: One, title: 'Seeking manicure for tattoo', url: '/item/1' },
     { id: 2, image: Two, title: 'Trading lash extensions', url: '/item/2' },
     { id: 3, image: Three, title: 'Gardener, looking for pedicure', url: '/item/3' },
