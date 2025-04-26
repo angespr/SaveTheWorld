@@ -8,7 +8,7 @@ function Requests() {
   const [page, setPage] = useState(1);
   const loader = useRef(null);
 
-  // Simulate fetching data from database, need to replace with actual API call
+  // TODO Simulate fetching data from database, need to replace with actual API call
   const fetchRequests = async (pageNum) => {
     // Simulate database fetch with timeout
     await new Promise((resolve) => setTimeout(resolve, 1000)); 
