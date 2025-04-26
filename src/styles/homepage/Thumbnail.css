@@ -1,0 +1,19 @@
+.thumbnail {
+  display: flex;
+  flex-direction: column;
+  text-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+  width: 200px;
+  height: 100%;
+  padding: 20px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  color: #1b0e14;
+  cursor: pointer;
+}
+
+.thumbnail img {
+  height: 200px;
+  width: 200px;
+}
