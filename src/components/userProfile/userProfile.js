@@ -86,7 +86,6 @@ export default function UserProfile() {
   );
 }
 
-
 const styles = {
   pageBackground: {
     backgroundColor: '#F5E9E2',
