@@ -10,7 +10,7 @@ function Header() {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   const handleProfileClick = () => { navigate('/profile'); };
-  const handleCreateRequestClick = () => { navigate('/create-request'); };
+  const handleCreateRequestClick = () => { navigate('/create-requests'); };
   const handleLogoClick = () => { navigate('/'); };
   const handleChatClick = () => { setIsChatOpen(true); };
   const handleChatClose = () => { setIsChatOpen(false); };
