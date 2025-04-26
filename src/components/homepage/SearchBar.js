@@ -12,7 +12,8 @@ function SearchBar() {
     <div className="search-container">
       <div className="filter-container">
         <button type="button" className="filter-toggle" onClick={toggleFilters}>
-          Filter<i class="fa-solid fa-caret-down"></i>
+          Filter
+          <i class="fa-solid fa-caret-down"></i>
         </button>
         {showFilters && (
           <div className="filter-dropdown">
