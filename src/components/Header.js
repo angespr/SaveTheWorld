@@ -7,7 +7,7 @@ function Header() {
   const navigate = useNavigate();
 
   const handleProfileClick = () => { navigate('/profile'); };
-  const handleCreateRequestClick = () => { navigate('/create-request'); };
+  const handleCreateRequestClick = () => { navigate('/create-requests'); };
   const handleLogoClick = () => { navigate('/'); };
 
   return (
