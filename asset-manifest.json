@@ -1,27 +1,17 @@
 {
   "files": {
     "main.css": "/juvo/static/css/main.2adb85c1.css",
-    "main.js": "/juvo/static/js/main.2d8acabb.js",
+    "main.js": "/juvo/static/js/main.a5818c6c.js",
     "static/js/453.ad8e3055.chunk.js": "/juvo/static/js/453.ad8e3055.chunk.js",
-    "static/media/3.png": "/juvo/static/media/3.1b23a6a90f75b5631bff.png",
-    "static/media/8.png": "/juvo/static/media/8.2209eaf1087f03c47c80.png",
-    "static/media/7.png": "/juvo/static/media/7.ba197b60e1cc972d1d2f.png",
-    "static/media/1.png": "/juvo/static/media/1.43ab267e882ce0142af9.png",
-    "static/media/10.png": "/juvo/static/media/10.d1850818bd957821dc7e.png",
-    "static/media/6.png": "/juvo/static/media/6.e57393a9ace506b47086.png",
-    "static/media/9.png": "/juvo/static/media/9.0c05ae2129673fa5837c.png",
-    "static/media/5.png": "/juvo/static/media/5.3900d6b9d25d0102529f.png",
-    "static/media/2.png": "/juvo/static/media/2.f84de0bb330d46cd42e9.png",
-    "static/media/4.png": "/juvo/static/media/4.1e225014ec7d9a96d7fb.png",
     "static/media/profile.png": "/juvo/static/media/profile.3cd9049eca1577530995.png",
     "static/media/logo.png": "/juvo/static/media/logo.c1a0da0f44ea1319dd3b.png",
     "index.html": "/juvo/index.html",
     "main.2adb85c1.css.map": "/juvo/static/css/main.2adb85c1.css.map",
-    "main.2d8acabb.js.map": "/juvo/static/js/main.2d8acabb.js.map",
+    "main.a5818c6c.js.map": "/juvo/static/js/main.a5818c6c.js.map",
     "453.ad8e3055.chunk.js.map": "/juvo/static/js/453.ad8e3055.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2adb85c1.css",
-    "static/js/main.2d8acabb.js"
+    "static/js/main.a5818c6c.js"
   ]
 }
