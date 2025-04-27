@@ -68,7 +68,7 @@ html, body {
 }
 
 /* submit button */
-.submit-btn {
+.submit-request-btn {
   background-color: #0e2528;
   color: #f5e9e2;
   padding: 12px 20px;
@@ -82,7 +82,7 @@ html, body {
 }
 
 /* hover effect on button */
-.submit-btn:hover {
+.submit-request-btn:hover {
   background-color: #143c40;
 }
 

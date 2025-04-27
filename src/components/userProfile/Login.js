@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import '../../styles/login/login.css';
+import '../../styles/userProfile/Login.css';
 import logo from '../../assets/logo.png';
 import { useNavigate } from 'react-router-dom'; // <-- for navigation
 
-const LoginPage = () => {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -38,9 +38,9 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
-        <div className='theLogo'>
-          <img className='avatar' src={logo} alt="logo" />
-          <h2 className='juvoTitle'>juvo</h2>
+        <div className='logo-container'>
+          <img className='logo-img' src={logo} alt="logo" />
+          <h2>juvo</h2>
         </div>
 
         <h2 className='titleLogin'>Login</h2>
@@ -73,7 +73,7 @@ const LoginPage = () => {
           </div>
         )}
 
-        <button type="submit">Login</button>
+        <button className="login-btn" type="submit">Login</button>
 
         <p className="signUpLink" onClick={() => window.location.href = '/#/signup'}>
           Sign Up
@@ -83,4 +83,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

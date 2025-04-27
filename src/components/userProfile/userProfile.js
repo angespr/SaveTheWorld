@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import profileImage from '../../assets/profile.png';
 import Header from '../Header';
 
-export default function UserProfile() {
+function UserProfile() {
   const user = {
     name: "Jennifer",
     talent: "NAIL TECH",
@@ -82,6 +82,7 @@ export default function UserProfile() {
     </div>
   );
 }
+export default UserProfile;
 
 const styles = {
   container: {
