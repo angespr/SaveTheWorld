@@ -6,9 +6,7 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
-  const [location, setLocation] = useState('');
-  const [acceptedTerms, setAcceptedTerms] = useState(true); // Assume they accepted TOS for now
-  const [talents, setTalents] = useState(''); // Optional
+  const [acceptedTerms, setAcceptedTerms] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,10 +15,8 @@ function SignUp() {
       name,
       email,
       password,
-      age: parseInt(age), // your backend expects an integer
-      location,
+      age: parseInt(age),
       acceptedTerms,
-      talents,
     };
 
     try {
@@ -103,45 +99,20 @@ function SignUp() {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            id="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            placeholder="Enter your location"
-            required
-          />
-        </div>
-
-        {/* Optional talents field */}
-        <div className="form-group">
-          <label htmlFor="talents">Talents (Optional)</label>
-          <input
-            type="text"
-            id="talents"
-            value={talents}
-            onChange={(e) => setTalents(e.target.value)}
-            placeholder="Describe your talents"
-          />
-        </div>
-
         {/* New checkbox for acceptedTerms */}
         <div className="form-group" style={{ marginTop: '15px' }}>
-          <label style={{ fontSize: '14px' }}>
-            <input
-              type="checkbox"
-              id="terms"
-              checked={acceptedTerms}
-              onChange={(e) => setAcceptedTerms(e.target.checked)}
-              required
-            />
-            &nbsp; I agree to the Terms and Conditions
-          </label>
+          <input
+            className="termsCheckbox"
+            type="checkbox"
+            id="terms"
+            checked={acceptedTerms}
+            onChange={(e) => setAcceptedTerms(e.target.checked)}
+            required
+          />
+          I agree to the Terms and Conditions
         </div>
 
-        <button type="submit" className="submit-btn">Sign Up</button>
+        <button className="submit-signup-btn">Sign Up</button>
       </form>
     </div>
   );
