@@ -2,8 +2,6 @@ package com.juvo.demo.controller;
 
 import com.juvo.demo.model.TradeRequest;
 import com.juvo.demo.repository.TradeRequestRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +13,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/requests")
 public class TradeRequestController {
-
-    private static final Logger logger = LoggerFactory.getLogger(TradeRequestController.class);
 
     @Autowired
     private TradeRequestRepository requestRepo;
@@ -59,5 +55,29 @@ public class TradeRequestController {
         Optional<TradeRequest> request = requestRepo.findById(id);
         return request.map(ResponseEntity::ok)
                       .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // Update request by ID
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateRequest(@PathVariable String id, @Valid @RequestBody TradeRequest updatedRequest) {
+        Optional<TradeRequest> existingRequestOpt = requestRepo.findById(id);
+
+        if (existingRequestOpt.isPresent()) {
+            TradeRequest existingRequest = existingRequestOpt.get();
+
+            // Update the fields of the existing request
+            existingRequest.setTitle(updatedRequest.getTitle());
+            existingRequest.setRequestDescription(updatedRequest.getRequestDescription());
+            existingRequest.setOfferDescription(updatedRequest.getOfferDescription());
+            existingRequest.setCategory(updatedRequest.getCategory());
+            existingRequest.setExpectedValue(updatedRequest.getExpectedValue());
+            existingRequest.setIsActive(updatedRequest.getIsActive());
+
+            // Save the updated request
+            requestRepo.save(existingRequest);
+            return ResponseEntity.ok("Trade request updated successfully!");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
