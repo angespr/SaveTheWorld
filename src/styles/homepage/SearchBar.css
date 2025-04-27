@@ -44,6 +44,7 @@
 
 .filter-container {
   position: relative;
+  margin-left: 20px; 
 }
 
 .filter-toggle {
@@ -60,18 +61,21 @@
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
+  width: 200px;
   margin-top: 5px;
   color: #1B0E14;
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 10px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  align-items: flex-start; 
 }
 
 .fa-caret-down {
@@ -80,7 +84,17 @@
 
 .filter-dropdown label {
   font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  align-items: center; 
+  gap: 10px;
+  padding: 5px 0;
+  word-wrap: break-word;
+  max-width: 170px;
+  justify-content: flex-start; 
 }
+
+.filter-dropdown input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 10px;
+  vertical-align: middle; 
+}
+
