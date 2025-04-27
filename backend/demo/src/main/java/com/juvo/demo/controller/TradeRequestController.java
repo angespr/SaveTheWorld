@@ -2,6 +2,8 @@ package com.juvo.demo.controller;
 
 import com.juvo.demo.model.TradeRequest;
 import com.juvo.demo.repository.TradeRequestRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +15,15 @@ import java.util.List;
 @RequestMapping("/api/requests")
 public class TradeRequestController {
 
+    private static final Logger logger = LoggerFactory.getLogger(TradeRequestController.class);  // Declare the logger
+
     @Autowired
     private TradeRequestRepository requestRepo;
 
     @PostMapping
     public String createRequest(@Valid @RequestBody TradeRequest request) {
+        // Log information when a trade request is created
+        request.setIsActive(true);
         requestRepo.save(request);
         return "Trade request posted!";
     }

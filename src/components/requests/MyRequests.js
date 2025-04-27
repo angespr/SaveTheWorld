@@ -17,11 +17,11 @@ function MyRequests() {
       <div className="my-requests-content">
         <Requests
           header="Active Requests"
-          endpoint={`http://localhost:8080/api/requests/user/{userId}/active`}
+          endpoint={`http://localhost:8080/api/requests/user/${userId}/active`}
           toggleable />
         <Requests
           header="Completed Requests"
-          endpoint={`http://localhost:8080/api/requests/user/{userId}/completed`}
+          endpoint={`http://localhost:8080/api/requests/user/${userId}/completed`}
           toggleable
         />
       </div>
