@@ -80,4 +80,17 @@ public class TradeRequestController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Delete request by ID
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRequestById(@PathVariable String id) {
+        Optional<TradeRequest> existingRequest = requestRepo.findById(id);
+
+        if (existingRequest.isPresent()) {
+            requestRepo.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

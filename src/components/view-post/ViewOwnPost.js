@@ -93,6 +93,28 @@ function ViewOwnPost() {
     }
   };
 
+  const handleDelete = async () => {
+    const confirmed = window.confirm('Are you sure you want to delete this request?');
+
+    if (confirmed) {
+      try {
+        const response = await fetch(`http://localhost:8080/api/requests/${requestId}`, {
+          method: 'DELETE',
+        });
+
+        if (response.ok) {
+          alert('Request deleted successfully!');
+          navigate('/'); // Redirect to homepage or another page after deletion
+        } else {
+          alert('Failed to delete request ❌');
+        }
+      } catch (err) {
+        console.error('Error deleting request:', err);
+        alert('Error deleting request ❌');
+      }
+    }
+  };
+
   if (!postData) {
     return <div>Loading...</div>;
   }
@@ -183,6 +205,10 @@ function ViewOwnPost() {
             }
           }}>
             {isEditing ? "Save" : "Update Request"}
+          </button>
+
+          <button className="delete-btn" onClick={handleDelete}>
+            Delete Request
           </button>
         </div>
       </div>

@@ -1,11 +1,9 @@
 package com.juvo.demo.repository;
 
 import com.juvo.demo.model.User;
-import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface UserRepository extends MongoRepository<User, String> {
     // Extend MongoRepository to automatically get basic CRUD operations
     User findByEmail(String email);
-    Optional<User> findById(String id);
 }
