@@ -1,9 +1,16 @@
 import '../../styles/requests/MyRequests.css';
 import Header from '../Header';
 import Requests from './Requests';
+import { getUserIdFromToken } from '../../utility/AuthUtil';
 
 function MyRequests() {
-  const userId = localStorage.getItem('token');
+  const userId = getUserIdFromToken();
+  
+  if (!userId) {
+    window.location.href = 'http://localhost:3000/#/login';
+    return null;
+  }
+
   return (
     <div className="my-requests-wrapper">
       <Header />

@@ -1,5 +1,6 @@
 import '../../styles/create-requests/CreateRequest.css';
 import Header from '../Header';
+import { getUserIdFromToken } from '../../utility/AuthUtil';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 
@@ -12,7 +13,14 @@ function CreateRequest() {
   const [expectedValue, setExpectedValue] = useState('');
   const [images, setImages] = useState([]);
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  const userId = getUserIdFromToken();
+
+  if (!userId) {
+    window.location.href = 'http://localhost:3000/#/login';
+    return null;
+  }
 
   /* image upload */
   const handleImageChange = (e) => {
@@ -23,13 +31,6 @@ function CreateRequest() {
   /* form submit */
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const userId = localStorage.getItem('userId');
-    if (!userId) {
-      alert("You must be logged in to create a listing.");
-      navigate('/login'); // Redirect to login if user is not logged in
-      return;
-    }
 
     const payload = {
       title: requestTitle,
