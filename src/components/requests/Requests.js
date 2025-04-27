@@ -2,14 +2,13 @@ import '../../styles/requests/Requests.css';
 import Thumbnail from '../homepage/Thumbnail';
 import { useState, useEffect, useRef } from 'react';
 
-function Requests({ header, toggleable = false }) {
+function Requests({ header, endpoint, toggleable = false }) {
   const [requests, setRequests] = useState([]);
   const [visible, setVisible] = useState(true);
-  const loader = useRef(null);
 
   const fetchRequests = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/requests');
+      const response = await fetch(endpoint);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }

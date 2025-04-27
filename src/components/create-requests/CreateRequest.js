@@ -24,13 +24,20 @@ function CreateRequest() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      alert("You must be logged in to create a listing.");
+      navigate('/login'); // Redirect to login if user is not logged in
+      return;
+    }
+
     const payload = {
       title: requestTitle,
       requestDescription: requestDescription,
       offerDescription: exchangeOffer,
       expectedValue: parseFloat(expectedValue) || 0,
       category: requestCategory,
-      userId: "demo-user" 
+      userId: userId
     };
 
     try {

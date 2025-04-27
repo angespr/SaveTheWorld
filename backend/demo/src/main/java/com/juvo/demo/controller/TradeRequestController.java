@@ -32,4 +32,18 @@ public class TradeRequestController {
         requestRepo.deleteAll();
         return ResponseEntity.noContent().build();
     }
+
+   // Get active requests by userId
+   @GetMapping("/user/{userId}/active")
+   public List<TradeRequest> getActiveRequestsByUserId(@PathVariable String userId) {
+       List<TradeRequest> activeRequests = requestRepo.findByUserIdAndIsActive(userId, true);
+       return activeRequests;
+   }
+
+   // Get completed requests by userId
+   @GetMapping("/user/{userId}/completed")
+   public List<TradeRequest> getCompletedRequestsByUserId(@PathVariable String userId) {
+       List<TradeRequest> completedRequests = requestRepo.findByUserIdAndIsActive(userId, false);
+       return completedRequests;
+   }
 }

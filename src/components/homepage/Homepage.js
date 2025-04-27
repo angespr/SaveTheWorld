@@ -3,7 +3,6 @@ import Header from '../Header';
 import SearchBar from './SearchBar';
 import Recommended from './Recommended';
 import Requests from '../requests/Requests';
-import React, { useState, useEffect } from 'react';
 
 function Homepage() {
 
@@ -12,7 +11,10 @@ function Homepage() {
       <Header />
       <SearchBar />
       <Recommended />
-      <Requests header="All Requests"/>
+      <Requests
+        header="All Requests"
+        endpoint="http://localhost:8080/api/requests"
+      />
     </div>
   );
 }
