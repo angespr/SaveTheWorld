@@ -13,8 +13,9 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")  // Allow all paths
-                        .allowedOrigins("http://localhost:3000") // Allow your React app
+                // Allow all paths to be accessible
+                registry.addMapping("/**")
+                        .allowedOrigins("https://angespr.github.io/")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);

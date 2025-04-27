@@ -12,7 +12,7 @@ function Homepage() {
       <SearchBar />
       <Recommended />
       <Requests header="All Requests Near You"
-        endpoint="http://localhost:8080/api/requests"
+        endpoint="http:///api/requests"
       />
     </div>
   );

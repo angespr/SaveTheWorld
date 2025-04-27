@@ -27,7 +27,7 @@ function ViewOwnPost() {
   const fetchData = async () => {
     try {
       // Fetch post data
-      const postResponse = await fetch(`http://localhost:8080/api/requests/${requestId}`);
+      const postResponse = await fetch(`http://198.244.96.156:8080/api/requests/${requestId}`);
       if (postResponse.ok) {
         const data = await postResponse.json();
         setPostData(data);
@@ -41,7 +41,7 @@ function ViewOwnPost() {
         const isCompleted = data.isActive === false;
   
         // Fetch author data if post is found
-        const userResponse = await fetch(`http://localhost:8080/api/users/${data.userId}`);
+        const userResponse = await fetch(`http://198.244.96.156:8080/api/users/${data.userId}`);
         if (userResponse.ok) {
           const userData = await userResponse.json();
           // Extract only the first word from the name
@@ -77,7 +77,7 @@ function ViewOwnPost() {
     };
 
     try {
-      const response = await fetch(`http://localhost:8080/api/requests/${requestId}`, {
+      const response = await fetch(`http://198.244.96.156:8080/api/requests/${requestId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ function ViewOwnPost() {
 
     if (confirmed) {
       try {
-        const response = await fetch(`http://localhost:8080/api/requests/${requestId}`, {
+        const response = await fetch(`http://198.244.96.156:8080/api/requests/${requestId}`, {
           method: 'DELETE',
         });
 
@@ -128,7 +128,7 @@ function ViewOwnPost() {
   
     if (confirmed) {
       try {
-        const response = await fetch(`http://localhost:8080/api/requests/${requestId}/complete`, {
+        const response = await fetch(`http://198.244.96.156:8080/api/requests/${requestId}/complete`, {
           method: 'PUT',
         });
   
@@ -151,7 +151,7 @@ function ViewOwnPost() {
   
     if (confirmed) {
       try {
-        const response = await fetch(`http://localhost:8080/api/requests/${requestId}/reactivate`, {
+        const response = await fetch(`http://198.244.96.156:8080/api/requests/${requestId}/reactivate`, {
           method: 'PUT',
         });
   

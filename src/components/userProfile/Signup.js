@@ -22,13 +22,17 @@ function SignUp() {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/users/register', {
+      console.log('try to register');
+      const response = await fetch('http://198.244.96.156:8080/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload),
       });
+      console.log('payload', body);
+      console.log('response', response);
+      console.log('response status', response.status);
 
       const result = await response.text();
       if (response.ok) {

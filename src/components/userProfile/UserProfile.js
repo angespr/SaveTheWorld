@@ -6,7 +6,7 @@ function UserProfile() {
   const user = {
     name: "Jennifer",
     talent: "NAIL TECH",
-    description: "Hi my name is Jennifer and I have been a nailtech for 5 years now. I love experimenting with new styles of nails. I am open to work on the weekends.",
+    description: "I have been a nail tech for 5 years now. I love experimenting with new styles of nails, so I'm excited to share my work with you! I am also a licensed esthetician and I love doing facials and waxing. I am open to trades for haircuts, tattoos, and lawn work."
   };
 
   const images = [
