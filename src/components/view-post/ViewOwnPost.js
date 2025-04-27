@@ -12,19 +12,42 @@ function ViewOwnPost() {
 
   const { requestId } = useParams();  // Capture requestId from URL
   const [postData, setPostData] = useState(null);
+  const [authorName, setAuthorName] = useState(null);
 
   useEffect(() => {
-    const fetchPostData = async () => {
-      const response = await fetch(`http://localhost:8080/api/requests/${requestId}`);
-      if (response.ok) {
-        const data = await response.json();
-        setPostData(data);
-      } else {
-        console.error('Failed to fetch post details');
+    const fetchData = async () => {
+      try {
+        // Fetch post data
+        const postResponse = await fetch(`http://localhost:8080/api/requests/${requestId}`);
+        if (postResponse.ok) {
+          const data = await postResponse.json();
+          setPostData(data);
+
+          console.log("data", data);
+          console.log("userId", data.userId);
+
+          // Fetch author data if post is found
+          const userResponse = await fetch(`http://localhost:8080/api/users/${data.userId}`);
+          if (userResponse.ok) {
+            const userData = await userResponse.json();
+            console.log("user data", userData);
+
+            // Extract only the first word from the name
+            const firstName = userData.name.split(' ')[0];
+            setAuthorName(firstName);  // Set only the first word
+          } else {
+            console.error('Failed to fetch author details');
+          }
+        } else {
+          console.error('Failed to fetch post details');
+        }
+      } catch (error) {
+        console.error('Error during fetch:', error);
       }
     };
-    fetchPostData();
-  }, [requestId]);
+
+    fetchData();
+  }, [requestId]); // Run this effect when requestId changes
 
   if (!postData) {
     return <div>Loading...</div>;
@@ -34,9 +57,9 @@ function ViewOwnPost() {
     <div className="view-post">
       <Header />
       <div className="view-post-container">
-      <h2 className="post-title">{postData.title}</h2>
+        <h2 className="post-title">{postData.title}</h2>
         <p className="post-description">{postData.requestDescription}</p>
-        <p className="post-user">by {postData.userId}</p>
+        <p className="post-user">by {authorName}</p>
 
         <h3 className="section-header">My Offer:</h3>
         <p className="offer-description">{postData.offerDescription}</p>
