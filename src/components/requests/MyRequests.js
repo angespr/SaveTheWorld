@@ -19,13 +19,13 @@ function MyRequests() {
       <div className="my-requests-content">
         <Requests
           header="Active Requests"
-          endpoint={`http://198.244.96.156:8080/api/requests/user/${userId}/active`}
+          endpoint={`https://juvoproject.com/api/requests/user/${userId}/active`}
           toggleable
           isMine
         />
         <Requests
           header="Completed Requests"
-          endpoint={`http://198.244.96.156:8080/api/requests/user/${userId}/completed`}
+          endpoint={`https://juvoproject.com/api/requests/user/${userId}/completed`}
           toggleable
           isMine
         />

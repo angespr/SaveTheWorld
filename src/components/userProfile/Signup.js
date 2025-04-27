@@ -22,8 +22,9 @@ function SignUp() {
     };
 
     try {
+      let body = '';
       console.log('try to register');
-      const response = await fetch('http://198.244.96.156:8080/api/users/register', {
+      const response = await fetch('https://juvoproject.com/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

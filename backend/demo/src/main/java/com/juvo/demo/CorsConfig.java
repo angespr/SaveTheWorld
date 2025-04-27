@@ -15,7 +15,7 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 // Allow all paths to be accessible
                 registry.addMapping("/**")
-                        .allowedOrigins("https://angespr.github.io/")
+                        .allowedOrigins("https://angespr.github.io/juvo")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);

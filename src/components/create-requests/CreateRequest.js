@@ -55,7 +55,7 @@ function CreateRequest() {
 
       console.log("payload", payload);
       
-      const postResponse = await fetch('http://198.244.96.156:8080/api/requests', {
+      const postResponse = await fetch('https://juvoproject.com/api/requests', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -12,7 +12,7 @@ function Homepage() {
       <SearchBar />
       <Recommended />
       <Requests header="All Requests Near You"
-        endpoint="http:///api/requests"
+        endpoint="https://juvoproject.com/api/requests"
       />
     </div>
   );

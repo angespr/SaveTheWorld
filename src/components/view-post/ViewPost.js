@@ -16,7 +16,7 @@ function ViewPost() {
 
   useEffect(() => {
     const fetchPostData = async () => {
-      const response = await fetch(`http://198.244.96.156:8080/api/requests/${requestId}`);
+      const response = await fetch(`https://juvoproject.com/api/requests/${requestId}`);
       if (response.ok) {
         const data = await response.json();
         setPostData(data);
