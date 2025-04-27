@@ -46,4 +46,13 @@ public class UserController {
 
         return ResponseEntity.ok(Map.of("token", token));
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable String id) {
+        User user = userRepo.findById(id).orElse(null);
+        if (user == null) {
+            return ResponseEntity.status(404).body(null);
+        }
+        return ResponseEntity.ok(user);
+    }
 }
