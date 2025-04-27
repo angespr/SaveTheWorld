@@ -1,36 +1,57 @@
 import '../../styles/homepage/Recommended.css';
+import { useState, useEffect } from 'react';
 import Thumbnail from '../requests/Thumbnail';
-import One from '../../assets/recommended-thumbnails/1.png';
-import Two from '../../assets/recommended-thumbnails/2.png';
-import Three from '../../assets/recommended-thumbnails/3.png';
-import Four from '../../assets/recommended-thumbnails/4.png';
-import Five from '../../assets/recommended-thumbnails/5.png';
-import Six from '../../assets/recommended-thumbnails/6.png';
-import Seven from '../../assets/recommended-thumbnails/7.png';
-import Eight from '../../assets/recommended-thumbnails/8.png';
-import Nine from '../../assets/recommended-thumbnails/9.png';
-import Ten from '../../assets/recommended-thumbnails/10.png';
 
 function Recommended() {
-  const recommendedItems = [ /* TODO pull from DB instead */
-    { id: 1, image: One, title: 'Seeking manicure for tattoo' },
-    { id: 2, image: Two, title: 'Trading lash extensions' },
-    { id: 3, image: Three, title: 'Gardener, looking for pedicure' },
-    { id: 4, image: Four, title: 'Request to trade salon services!' },
-    { id: 5, image: Five, title: 'Color services for gel-X' },
-    { id: 6, image: Six, title: 'Free 60 minute facial! Looking for nail artists' },
-    { id: 7, image: Seven, title: 'Black and gray apprentice tattoo for nail art' },
-    { id: 8, image: Eight, title: '3-5 inch tattoo in exchange for mani/pedi' },
-    { id: 9, image: Nine, title: 'Free traditional hot stone massage' },
-    { id: 10, image: Ten, title: 'Looking for gel manicure, can offer 60 minute massage' },
+  const recommendedItems = [
+    '680dfbbd6410970ee1ffbcaa',
+    '680dfb0a6410970ee1ffbca9',
+    '680dfeac6410970ee1ffbcac',
+    '680dfc0e6410970ee1ffbcab',
+    '680dfbbd6410970ee1ffbcaa',
+    '680dfa606410970ee1ffbca8',
+    '680df91e6410970ee1ffbca7',
+    '680df8526410970ee1ffbca6',
+    '680dff986410970ee1ffbcad',
   ];
+
+  const [requests, setRequests] = useState([]);
+
+  const fetchRequests = async () => {
+    try {
+      const fetchedRequests = await Promise.all(
+        recommendedItems.map(async (id) => {
+          const response = await fetch(`https://juvoproject.com/api/requests/${id}`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return await response.json();
+        })
+      );
+
+      const mappedRequests = fetchedRequests.map(req => ({
+        id: req.id,
+        imageUrl: req.imageUrl,
+        title: req.title
+      }));
+
+      setRequests(mappedRequests);
+    } catch (error) {
+      console.error("Error fetching requests:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRequests();
+  }, []);
 
   return (
     <div className="recommended-container">
       <h2>Recommended for You</h2>
       <div className="recommended-thumbnails">
-        {recommendedItems.map(item => (
+        {requests.map((item) => (
           <Thumbnail
+            key={item.id}
             requestId={item.id}
             image={item.imageUrl}
             title={item.title}

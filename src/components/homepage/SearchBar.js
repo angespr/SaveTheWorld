@@ -17,9 +17,14 @@ function SearchBar() {
         </button>
         {showFilters && (
           <div className="filter-dropdown">
-            <label><input type="checkbox" name="filter1" /> Beauty</label>
-            <label><input type="checkbox" name="filter2" /> Landscaping</label>
-            <label><input type="checkbox" name="filter3" /> Tutoring/Teaching</label>
+            <div className="filter-option"><input type="checkbox" name="Beauty" />Beauty</div>
+            <div className="filter-option"><input type="checkbox" name="Art" />Art</div>
+            <div className="filter-option"><input type="checkbox" name="Fiber Arts" />Fiber Arts</div>
+            <div className="filter-option"><input type="checkbox" name="Outdoor" />Outdoor</div>
+            <div className="filter-option"><input type="checkbox" name="Pets" />Pets</div>
+            <div className="filter-option"><input type="checkbox" name="Education" />Education</div>
+            <div className="filter-option"><input type="checkbox" name="Cooking/Baking" />Cooking/Baking</div>
+            <div className="filter-option"><input type="checkbox" name="Manual Labor" />Manual Labor</div>
           </div>
         )}
       </div>
