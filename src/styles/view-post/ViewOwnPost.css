@@ -33,3 +33,20 @@
   .delete-btn:hover {
     background-color: #d36363;
   }
+
+  .complete-btn {
+    width: 325px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6a8d92;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .complete-btn:hover {
+    background-color: #4D676A;
+  }
