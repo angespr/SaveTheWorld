@@ -59,7 +59,6 @@ function Requests({ header, toggleable = false }) {
           ))}
         </div>
       )}
-      {visible && <div ref={loader} className="loading">Loading...</div>}
     </div>
   );
 }
