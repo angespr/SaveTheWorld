@@ -19,25 +19,18 @@ public class User {
     private int age;
 
     @NotBlank
-    private String location;
-
-    @NotBlank
     private String password;
-
-    private String talents;
 
     private boolean acceptedTerms;
 
     // Constructors
     public User() {}
 
-    public User(String name, String email, int age, String location, String password, String talents, boolean acceptedTerms) {
+    public User(String name, String email, int age, String password, boolean acceptedTerms) {
         this.name = name;
         this.email = email;
         this.age = age;
-        this.location = location;
         this.password = password;
-        this.talents = talents;
         this.acceptedTerms = acceptedTerms;
     }
 
@@ -73,29 +66,13 @@ public class User {
     public void setAge(int age) {
         this.age = age;
     }
-    
-    public String getLocation() {
-        return location;
-    }
-    
-    public void setLocation(String location) {
-        this.location = location;
-    }
-    
+
     public String getPassword() {
         return password;
     }
     
     public void setPassword(String password) {
         this.password = password;
-    }
-    
-    public String getTalents() {
-        return talents;
-    }
-    
-    public void setTalents(String talents) {
-        this.talents = talents;
     }
     
     public boolean isAcceptedTerms() {
