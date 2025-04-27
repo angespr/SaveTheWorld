@@ -120,4 +120,10 @@ public class TradeRequestController {
             return ResponseEntity.status(404).body("Request not found.");
         }
     }
+
+    // Get all requests where the userId is not a certain value
+    @GetMapping("/not-user/{userId}")
+    public List<TradeRequest> getRequestsNotByUserId(@PathVariable String userId) {
+        return requestRepo.findAllRequestsNotByUserId(userId);
+    }
 }

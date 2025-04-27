@@ -3,8 +3,17 @@ import Header from '../Header';
 import SearchBar from './SearchBar';
 import Recommended from './Recommended';
 import Requests from '../requests/Requests';
+import { getUserIdFromToken } from '../../utility/AuthUtil';
+import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
+  const navigate = useNavigate();
+  const userId = getUserIdFromToken();
+
+  if (!userId) {
+    navigate('/login');
+    return null;
+  }
 
   return (
     <div className="homepage">
@@ -12,7 +21,7 @@ function Homepage() {
       <SearchBar />
       <Recommended />
       <Requests header="All Requests Near You"
-        endpoint="https://juvoproject.com/api/requests"
+        endpoint={`https://juvoproject.com/api/requests/not-user/${userId}`}
       />
     </div>
   );

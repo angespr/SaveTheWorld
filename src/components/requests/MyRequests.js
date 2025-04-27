@@ -5,8 +5,8 @@ import { getUserIdFromToken } from '../../utility/AuthUtil';
 import { useNavigate } from 'react-router-dom';
 
 function MyRequests() {
-  const userId = getUserIdFromToken();
   const navigate = useNavigate();
+  const userId = getUserIdFromToken();
   
   if (!userId) {
     navigate('/login');
