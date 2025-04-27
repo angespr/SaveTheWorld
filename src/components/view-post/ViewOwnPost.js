@@ -4,11 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 function ViewOwnPost() {
-  const [galleryImages] = useState([
-    '/test_garden1.jpg',
-    '/test_garden2.jpg',
-    '/test_garden3.jpg',
-  ]);
   
   const { requestId } = useParams();  // Capture requestId from URL
   const navigate = useNavigate();
@@ -212,12 +207,8 @@ function ViewOwnPost() {
           )}
         </p>
 
-        <h3 className="section-header">Gallery:</h3>
-        <div className="gallery">
-          {galleryImages.map((image, index) => (
-            <img key={index} src={image} alt={`Gallery ${index}`} className="gallery-image" />
-          ))}
-        </div>
+        <h3 className="section-header">Thumbnail:</h3>
+        <img className="gallery-image" src={postData.imageUrl} alt="Thumbnail" />
 
         <h3 className="section-header">Category:</h3>
         <div className="category-tag">

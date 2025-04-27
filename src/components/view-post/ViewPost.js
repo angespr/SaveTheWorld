@@ -3,30 +3,41 @@ import Header from '../Header';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-function ViewPost() {
-  /* gallery images for the post */
-  const [galleryImages, setGalleryImages] = useState([
-    '/test_hair1.jpg',
-    '/test_hair2.jpg',
-    '/test_hair3.jpg',
-  ]);
-  
+function ViewPost() {  
   const { requestId } = useParams();  // Capture requestId from URL
   const [postData, setPostData] = useState(null);
+  const [authorName, setAuthorName] = useState(null);
 
-  useEffect(() => {
-    const fetchPostData = async () => {
-      const response = await fetch(`https://juvoproject.com/api/requests/${requestId}`);
-      if (response.ok) {
-        const data = await response.json();
+  const fetchData = async () => {
+    try {
+      // Fetch post data
+      const postResponse = await fetch(`https://juvoproject.com/api/requests/${requestId}`);
+      if (postResponse.ok) {
+        const data = await postResponse.json();
         setPostData(data);
+  
+        // Fetch author data if post is found
+        const userResponse = await fetch(`https://juvoproject.com/api/users/${data.userId}`);
+        if (userResponse.ok) {
+          const userData = await userResponse.json();
+          // Extract only the first word from the name
+          const firstName = userData.name.split(' ')[0];
+          setAuthorName(firstName);  // Set only the first word
+        } else {
+          console.error('Failed to fetch author details');
+        }
       } else {
         console.error('Failed to fetch post details');
       }
-    };
-    fetchPostData();
-  }, [requestId]);
+    } catch (error) {
+      console.error('Error during fetch:', error);
+    }
+  };
 
+  useEffect(() => {
+      fetchData();
+    }, [requestId]);
+  
   if (!postData) {
     return <div>Loading...</div>;
   }
@@ -37,17 +48,13 @@ function ViewPost() {
       <div className="view-post-container">
         <h2 className="post-title">{postData.title}</h2>
         <p className="post-description">{postData.requestDescription}</p>
-        <p className="post-user">by {postData.userId}</p>
+        <p className="post-user">by {authorName}</p>
 
         <h3 className="section-header">My Offer:</h3>
         <p className="offer-description">{postData.offerDescription}</p>
 
-        <h3 className="section-header">Gallery:</h3>
-        <div className="gallery">
-          {galleryImages.map((image, index) => (
-            <img key={index} src={image} alt={`Gallery ${index}`} className="gallery-image" />
-          ))}
-        </div>
+        <h3 className="section-header">Thumbnail:</h3>
+        <img className="gallery-image" src={postData.imageUrl} alt="Thumbnail" />
 
         <h3 className="section-header">Category:</h3>
         <div className="category-tag">{postData.category}</div>
