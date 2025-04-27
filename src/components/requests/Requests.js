@@ -1,15 +1,14 @@
 import '../../styles/requests/Requests.css';
-import Thumbnail from '../homepage/Thumbnail';
+import Thumbnail from './Thumbnail';
 import { useState, useEffect, useRef } from 'react';
 
-function Requests({ header, toggleable = false }) {
+function Requests({ header, endpoint, toggleable = false, isMine = false }) {
   const [requests, setRequests] = useState([]);
   const [visible, setVisible] = useState(true);
-  const loader = useRef(null);
 
   const fetchRequests = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/requests');
+      const response = await fetch(endpoint);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -18,8 +17,7 @@ function Requests({ header, toggleable = false }) {
       const mappedRequests = data.map(req => ({
         id: req.id,
         image: req.imageUrl,
-        title: req.title,
-        url: `/request/${req.id}`,
+        title: req.title
       }));
       setRequests(mappedRequests);
     } catch (error) {
@@ -51,15 +49,14 @@ function Requests({ header, toggleable = false }) {
         <div className="requests-grid">
           {requests.map(item => (
             <Thumbnail
-              key={item.id}
+              requestId={item.id}
               image={item.image}
               title={item.title}
-              url={item.url}
+              isMine={isMine}
             />
           ))}
         </div>
       )}
-      {visible && <div ref={loader} className="loading">Loading...</div>}
     </div>
   );
 }

@@ -22,7 +22,9 @@ public class TradeRequest {
 
     private String category;
 
-    private String userId; // optional: who posted the request
+    private String userId;
+
+    private Boolean isActive;
 
     // Constructors
     public TradeRequest() {}
@@ -34,6 +36,7 @@ public class TradeRequest {
         this.expectedValue = expectedValue;
         this.category = category;
         this.userId = userId;
+        this.isActive = true; // Default to active
     }
 
     // Getters and Setters
@@ -91,5 +94,13 @@ public class TradeRequest {
     
     public void setUserId(String userId) {
         this.userId = userId;
-    }    
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+    
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
 }

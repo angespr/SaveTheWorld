@@ -23,7 +23,8 @@ function Login() {
       });
 
       if (response.ok) {
-        // Success! Redirect to homepage
+        const data = await response.json();
+        localStorage.setItem('token', data.token); // store token in localStorage
         navigate('/');
       } else {
         const errorData = await response.text();

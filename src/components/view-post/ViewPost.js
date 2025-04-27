@@ -1,6 +1,7 @@
 import '../../styles/view-post/ViewPost.css';
 import Header from '../Header';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 function ViewPost() {
   /* gallery images for the post */
@@ -9,21 +10,37 @@ function ViewPost() {
     '/test_hair2.jpg',
     '/test_hair3.jpg',
   ]);
+  
+  const { requestId } = useParams();  // Capture requestId from URL
+  const [postData, setPostData] = useState(null);
+
+  useEffect(() => {
+    const fetchPostData = async () => {
+      const response = await fetch(`http://localhost:8080/api/requests/${requestId}`);
+      if (response.ok) {
+        const data = await response.json();
+        setPostData(data);
+      } else {
+        console.error('Failed to fetch post details');
+      }
+    };
+    fetchPostData();
+  }, [requestId]);
+
+  if (!postData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="view-post">
       <Header />
       <div className="view-post-container">
-        <h2 className="post-title">Need tutoring service for my child</h2>
-        <p className="post-description">
-          Hello! I'm a single mother and need tutoring services for my 6-year-old son. He's been having trouble with his reading comprehension and I'm just too busy with other work to help him...
-        </p>
-        <p className="post-user">by Jennifer</p>
+        <h2 className="post-title">{postData.title}</h2>
+        <p className="post-description">{postData.requestDescription}</p>
+        <p className="post-user">by {postData.userId}</p>
 
         <h3 className="section-header">My Offer:</h3>
-        <p className="offer-description">
-        I'm a full-time hairdresser and specialize in highlights and layered cuts! I have a base price for a haircut and how long they'll take, as well as charge extra for coloring.
-        </p>
+        <p className="offer-description">{postData.offerDescription}</p>
 
         <h3 className="section-header">Gallery:</h3>
         <div className="gallery">
@@ -33,10 +50,10 @@ function ViewPost() {
         </div>
 
         <h3 className="section-header">Category:</h3>
-        <div className="category-tag">Beauty</div>
+        <div className="category-tag">{postData.category}</div>
 
         <h3 className="section-header">Estimated Monetary Value:</h3>
-        <div className="monetary-value">$40</div>
+        <div className="monetary-value">${postData.expectedValue}</div>
 
         <button className="submit-btn">Make an Offer</button>
       </div>

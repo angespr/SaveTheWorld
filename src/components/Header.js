@@ -12,7 +12,7 @@ function Header() {
 
   const handleLogoClick = () => { navigate('/'); };
   const handleMyRequestsClick = () => { navigate('/my-requests'); };
-  const handleCreateRequestClick = () => { navigate('/create-requests'); };
+  const handleCreateRequestClick = () => { navigate('/create-request'); };
   const handleChatClick = () => { setIsChatOpen(true); };
   const handleChatClose = () => { setIsChatOpen(false); };
   const handleProfileClick = () => { navigate('/profile'); };
