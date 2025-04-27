@@ -17,9 +17,9 @@ function SearchBar() {
         </button>
         {showFilters && (
           <div className="filter-dropdown">
-            <label><input type="checkbox" name="filter1" /> Option 1</label>
-            <label><input type="checkbox" name="filter2" /> Option 2</label>
-            <label><input type="checkbox" name="filter3" /> Option 3</label>
+            <label><input type="checkbox" name="filter1" /> Beauty</label>
+            <label><input type="checkbox" name="filter2" /> Landscaping</label>
+            <label><input type="checkbox" name="filter3" /> Tutoring/Teaching</label>
           </div>
         )}
       </div>
