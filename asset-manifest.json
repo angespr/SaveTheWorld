@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/juvo/static/css/main.15dec971.css",
-    "main.js": "/juvo/static/js/main.357aa0bc.js",
+    "main.css": "/juvo/static/css/main.c1d2c6c2.css",
+    "main.js": "/juvo/static/js/main.4982b8ff.js",
     "static/js/453.ad8e3055.chunk.js": "/juvo/static/js/453.ad8e3055.chunk.js",
     "static/media/3.png": "/juvo/static/media/3.1b23a6a90f75b5631bff.png",
     "static/media/8.png": "/juvo/static/media/8.2209eaf1087f03c47c80.png",
@@ -16,12 +16,12 @@
     "static/media/profile.png": "/juvo/static/media/profile.3cd9049eca1577530995.png",
     "static/media/logo.png": "/juvo/static/media/logo.c1a0da0f44ea1319dd3b.png",
     "index.html": "/juvo/index.html",
-    "main.15dec971.css.map": "/juvo/static/css/main.15dec971.css.map",
-    "main.357aa0bc.js.map": "/juvo/static/js/main.357aa0bc.js.map",
+    "main.c1d2c6c2.css.map": "/juvo/static/css/main.c1d2c6c2.css.map",
+    "main.4982b8ff.js.map": "/juvo/static/js/main.4982b8ff.js.map",
     "453.ad8e3055.chunk.js.map": "/juvo/static/js/453.ad8e3055.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.15dec971.css",
-    "static/js/main.357aa0bc.js"
+    "static/css/main.c1d2c6c2.css",
+    "static/js/main.4982b8ff.js"
   ]
 }
