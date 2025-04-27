@@ -33,27 +33,24 @@ function App() {
           } />
           <Route path="/create-request" element={
             <PrivateRoute>
-              <Homepage />
-            </PrivateRoute>
-          } />
-          <Route path="/create-requests" element={
-            <PrivateRoute>
               <CreateRequest />
             </PrivateRoute>
           } />
-          <Route path="/view-post" element={
+          {/* Dynamic Route for ViewPost */}
+          <Route path="/view-post/:requestId" element={
             <PrivateRoute>
               <ViewPost />
+            </PrivateRoute>
+          } />
+          {/* Dynamic Route for ViewOwnPost */}
+          <Route path="/my-post/:requestId" element={
+            <PrivateRoute>
+              <ViewOwnPost />
             </PrivateRoute>
           } />
           <Route path="/my-requests" element={
             <PrivateRoute>
               <MyRequests />
-            </PrivateRoute>
-          } />
-          <Route path="/view-own-post" element={
-            <PrivateRoute>
-              <ViewOwnPost />
             </PrivateRoute>
           } />
         </Routes>

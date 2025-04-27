@@ -1,8 +1,8 @@
 import '../../styles/requests/Requests.css';
-import Thumbnail from '../homepage/Thumbnail';
+import Thumbnail from './Thumbnail';
 import { useState, useEffect, useRef } from 'react';
 
-function Requests({ header, endpoint, toggleable = false }) {
+function Requests({ header, endpoint, toggleable = false, isMine = false }) {
   const [requests, setRequests] = useState([]);
   const [visible, setVisible] = useState(true);
 
@@ -17,8 +17,7 @@ function Requests({ header, endpoint, toggleable = false }) {
       const mappedRequests = data.map(req => ({
         id: req.id,
         image: req.imageUrl,
-        title: req.title,
-        url: `/request/${req.id}`,
+        title: req.title
       }));
       setRequests(mappedRequests);
     } catch (error) {
@@ -50,10 +49,10 @@ function Requests({ header, endpoint, toggleable = false }) {
         <div className="requests-grid">
           {requests.map(item => (
             <Thumbnail
-              key={item.id}
+              requestId={item.id}
               image={item.image}
               title={item.title}
-              url={item.url}
+              isMine={isMine}
             />
           ))}
         </div>

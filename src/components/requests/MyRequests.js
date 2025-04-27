@@ -18,11 +18,14 @@ function MyRequests() {
         <Requests
           header="Active Requests"
           endpoint={`http://localhost:8080/api/requests/user/${userId}/active`}
-          toggleable />
+          toggleable
+          isMine
+        />
         <Requests
           header="Completed Requests"
           endpoint={`http://localhost:8080/api/requests/user/${userId}/completed`}
           toggleable
+          isMine
         />
       </div>
     </div>

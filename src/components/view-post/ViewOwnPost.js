@@ -1,6 +1,7 @@
 import '../../styles/view-post/ViewOwnPost.css';
 import Header from '../Header';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 function ViewOwnPost() {
   const [galleryImages] = useState([
@@ -9,20 +10,36 @@ function ViewOwnPost() {
     '/test_garden3.jpg',
   ]);
 
+  const { requestId } = useParams();  // Capture requestId from URL
+  const [postData, setPostData] = useState(null);
+
+  useEffect(() => {
+    const fetchPostData = async () => {
+      const response = await fetch(`http://localhost:8080/api/requests/${requestId}`);
+      if (response.ok) {
+        const data = await response.json();
+        setPostData(data);
+      } else {
+        console.error('Failed to fetch post details');
+      }
+    };
+    fetchPostData();
+  }, [requestId]);
+
+  if (!postData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="view-post">
       <Header />
       <div className="view-post-container">
-        <h2 className="post-title">Looking for a full-body massage!</h2>
-        <p className="post-description">
-          I'm in need of a massage because of how much yardwork I've been doing lately. I would like to get a 30-45 minute massage for my full-body.
-        </p>
-        <p className="post-user">by Evelyn</p>
+      <h2 className="post-title">{postData.title}</h2>
+        <p className="post-description">{postData.requestDescription}</p>
+        <p className="post-user">by {postData.userId}</p>
 
         <h3 className="section-header">My Offer:</h3>
-        <p className="offer-description">
-          I've been doing gardening for 14+ years now, and I can do weeding, gardening, and give you advice on the best practices to keep your plots healthy!
-        </p>
+        <p className="offer-description">{postData.offerDescription}</p>
 
         <h3 className="section-header">Gallery:</h3>
         <div className="gallery">
@@ -32,10 +49,10 @@ function ViewOwnPost() {
         </div>
 
         <h3 className="section-header">Category:</h3>
-        <div className="category-tag">Outdoor</div>
+        <div className="category-tag">{postData.category}</div>
 
         <h3 className="section-header">Estimated Monetary Value:</h3>
-        <div className="monetary-value">$80</div>
+        <div className="monetary-value">${postData.expectedValue}</div>
 
         <div className="own-post-buttons">
           <button className="update-btn">Update Request</button>
