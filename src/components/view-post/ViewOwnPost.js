@@ -17,6 +17,7 @@ function ViewOwnPost() {
   const [authorName, setAuthorName] = useState(null);
 
   const [isEditing, setIsEditing] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState('');
   const [updatedDescription, setUpdatedDescription] = useState('');
   const [updatedOfferDescription, setUpdatedOfferDescription] = useState('');
@@ -35,7 +36,10 @@ function ViewOwnPost() {
         setUpdatedOfferDescription(data.offerDescription);
         setUpdatedCategory(data.category);
         setUpdatedExpectedValue(data.expectedValue);
-
+  
+        // Check if the request is active
+        const isCompleted = data.isActive === false;
+  
         // Fetch author data if post is found
         const userResponse = await fetch(`http://localhost:8080/api/users/${data.userId}`);
         if (userResponse.ok) {
@@ -46,6 +50,9 @@ function ViewOwnPost() {
         } else {
           console.error('Failed to fetch author details');
         }
+  
+        // Update the state to show completed status (isActive)
+        setIsCompleted(isCompleted); // This will be used for the button text condition
       } else {
         console.error('Failed to fetch post details');
       }
@@ -53,6 +60,7 @@ function ViewOwnPost() {
       console.error('Error during fetch:', error);
     }
   };
+  
 
   useEffect(() => {
     fetchData(); // Initial data fetch on mount
@@ -114,6 +122,52 @@ function ViewOwnPost() {
       }
     }
   };
+
+  const handleComplete = async () => {
+    const confirmed = window.confirm('Are you sure you want to mark this request as completed?');
+  
+    if (confirmed) {
+      try {
+        const response = await fetch(`http://localhost:8080/api/requests/${requestId}/complete`, {
+          method: 'PUT',
+        });
+  
+        if (response.ok) {
+          alert('Request marked as completed!');
+          // Refetch the data after the update
+          fetchData();
+        } else {
+          alert('Failed to mark request as completed ❌');
+        }
+      } catch (err) {
+        console.error('Error completing request:', err);
+        alert('Error completing request ❌');
+      }
+    }
+  };
+  
+  const handleReActivate = async () => {
+    const confirmed = window.confirm('Are you sure you want to reactivate this request?');
+  
+    if (confirmed) {
+      try {
+        const response = await fetch(`http://localhost:8080/api/requests/${requestId}/reactivate`, {
+          method: 'PUT',
+        });
+  
+        if (response.ok) {
+          alert('Request reactivated!');
+          // Refetch the data after the update
+          fetchData();
+        } else {
+          alert('Failed to reactivate request ❌');
+        }
+      } catch (err) {
+        console.error('Error reactivating request:', err);
+        alert('Error reactivating request ❌');
+      }
+    }
+  };  
 
   if (!postData) {
     return <div>Loading...</div>;
@@ -211,6 +265,12 @@ function ViewOwnPost() {
             Delete Request
           </button>
         </div>
+        <button 
+          className="complete-btn" 
+          onClick={isCompleted ? handleReActivate : handleComplete}>
+          {isCompleted ? "Mark as Active" : "Mark as Completed"}
+        </button>
+
       </div>
     </div>
   );

@@ -71,7 +71,6 @@ public class TradeRequestController {
             existingRequest.setOfferDescription(updatedRequest.getOfferDescription());
             existingRequest.setCategory(updatedRequest.getCategory());
             existingRequest.setExpectedValue(updatedRequest.getExpectedValue());
-            existingRequest.setIsActive(updatedRequest.getIsActive());
 
             // Save the updated request
             requestRepo.save(existingRequest);
@@ -91,6 +90,34 @@ public class TradeRequestController {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    // Mark request as completed (set isActive to false)
+    @PutMapping("/{id}/complete")
+    public ResponseEntity<String> markRequestAsCompleted(@PathVariable String id) {
+        Optional<TradeRequest> requestOptional = requestRepo.findById(id);
+        if (requestOptional.isPresent()) {
+            TradeRequest request = requestOptional.get();
+            request.setIsActive(false);
+            requestRepo.save(request);
+            return ResponseEntity.ok("Request marked as completed.");
+        } else {
+            return ResponseEntity.status(404).body("Request not found.");
+        }
+    }
+
+    // Mark request as active (set isActive to true)
+    @PutMapping("/{id}/reactivate")
+    public ResponseEntity<String> markRequestAsActive(@PathVariable String id) {
+        Optional<TradeRequest> requestOptional = requestRepo.findById(id);
+        if (requestOptional.isPresent()) {
+            TradeRequest request = requestOptional.get();
+            request.setIsActive(true);
+            requestRepo.save(request);
+            return ResponseEntity.ok("Request marked as completed.");
+        } else {
+            return ResponseEntity.status(404).body("Request not found.");
         }
     }
 }
