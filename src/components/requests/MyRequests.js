@@ -2,12 +2,14 @@ import '../../styles/requests/MyRequests.css';
 import Header from '../Header';
 import Requests from './Requests';
 import { getUserIdFromToken } from '../../utility/AuthUtil';
+import { useNavigate } from 'react-router-dom';
 
 function MyRequests() {
   const userId = getUserIdFromToken();
+  const navigate = useNavigate();
   
   if (!userId) {
-    window.location.href = 'http://localhost:3000/#/login';
+    navigate('/login');
     return null;
   }
 

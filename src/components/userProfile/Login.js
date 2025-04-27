@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import '../../styles/userProfile/Login.css';
 import logo from '../../assets/logo.png';
-import { useNavigate } from 'react-router-dom'; // <-- for navigation
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const handleSignupClick = () => { navigate('/signup'); };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,7 +77,7 @@ function Login() {
 
         <button className="login-btn" type="submit">Login</button>
 
-        <p className="signUpLink" onClick={() => window.location.href = '/#/signup'}>
+        <p className="signUpLink" onClick={handleSignupClick}>
           Sign Up
         </p>
       </form>

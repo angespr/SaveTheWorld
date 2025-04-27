@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import '../../styles/userProfile/Signup.css';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,7 +35,7 @@ function SignUp() {
         alert('Registration successful! ✅');
         console.log(result);
         // Redirect to login page after successful signup
-        window.location.href = 'http://localhost:3000/#/login';
+        navigate('/login');
       } else {
         alert(`Registration failed: ${result} ❌`);
         console.error(result);
