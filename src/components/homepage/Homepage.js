@@ -15,12 +15,15 @@ function Homepage() {
     return null;
   }
 
+  console.log("User ID from token:", userId);
+
   return (
     <div className="homepage">
       <Header />
       <SearchBar />
       <Recommended />
-      <Requests header="All Requests Near You"
+      <Requests
+        header="All Requests Near You"
         endpoint={`https://juvoproject.com/api/requests/not-user/${userId}`}
       />
     </div>

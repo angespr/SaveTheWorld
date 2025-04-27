@@ -1,10 +1,12 @@
 import '../../styles/requests/Requests.css';
 import Thumbnail from './Thumbnail';
-import { useState, useEffect, useRef } from 'react';
+import { getUserIdFromToken } from '../../utility/AuthUtil';
+import { useState, useEffect } from 'react';
 
 function Requests({ header, endpoint, toggleable = false, isMine = false }) {
   const [requests, setRequests] = useState([]);
   const [visible, setVisible] = useState(true);
+  const userId = getUserIdFromToken();
 
   const fetchRequests = async () => {
     try {
@@ -13,21 +15,24 @@ function Requests({ header, endpoint, toggleable = false, isMine = false }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-  
-      const mappedRequests = data.map(req => ({
+
+      const filteredRequests = data.filter(req => req.userId !== userId);
+
+      const mappedRequests = filteredRequests.map(req => ({
         id: req.id,
         imageUrl: req.imageUrl,
         title: req.title
       }));
+
       setRequests(mappedRequests);
     } catch (error) {
       console.error("Error fetching requests:", error);
     }
-  };  
+  };
 
   useEffect(() => {
     fetchRequests();
-  }, []);
+  }, [userId]);
 
   const handleToggle = () => {
     setVisible(prev => !prev);
