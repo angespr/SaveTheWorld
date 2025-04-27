@@ -16,10 +16,9 @@ function Requests({ header, endpoint, toggleable = false, isMine = false }) {
       }
       const data = await response.json();
 
-      // If isMine is false, filter out requests made by the current user
       const filteredRequests = isMine
         ? data
-        : data.filter(req => req.userId !== userId);
+        : data.filter(req => req.userId !== userId && req.isActive);
 
       const mappedRequests = filteredRequests.map(req => ({
         id: req.id,

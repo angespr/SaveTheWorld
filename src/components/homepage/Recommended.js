@@ -4,7 +4,7 @@ import Thumbnail from '../requests/Thumbnail';
 
 function Recommended() {
   const recommendedItems = [
-    '680dfbbd6410970ee1ffbcaa',
+    '680dee30047bfd1e83b9b90d',
     '680dfb0a6410970ee1ffbca9',
     '680dfeac6410970ee1ffbcac',
     '680dfc0e6410970ee1ffbcab',
@@ -29,7 +29,10 @@ function Recommended() {
         })
       );
 
-      const mappedRequests = fetchedRequests.map(req => ({
+      // Filter out requests where isActive is false
+      const filteredRequests = fetchedRequests.filter(req => req.isActive);
+
+      const mappedRequests = filteredRequests.map(req => ({
         id: req.id,
         imageUrl: req.imageUrl,
         title: req.title
