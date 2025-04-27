@@ -217,11 +217,14 @@ function ViewOwnPost() {
               value={updatedCategory}
               onChange={(e) => setUpdatedCategory(e.target.value)}
             >
-              <option value="Beauty">Beauty</option>
-              <option value="Art">Art</option>
-              <option value="Fiber Arts">Fiber Arts</option>
-              <option value="Outdoor">Outdoor</option>
-              <option value="Pets">Pets</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Art">Art</option>
+            <option value="Fiber Arts">Fiber Arts</option>
+            <option value="Outdoor">Outdoor</option>
+            <option value="Pets">Pets</option>
+            <option value="Education">Education</option>
+            <option value="Cooking/Baking">Cooking/Baking</option>
+            <option value="Manual Labor">Manual Labor</option>
             </select>
           ) : (
             postData.category

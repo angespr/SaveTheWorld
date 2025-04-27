@@ -150,6 +150,9 @@ function CreateRequest() {
               <option value="Fiber Arts">Fiber Arts</option>
               <option value="Outdoor">Outdoor</option>
               <option value="Pets">Pets</option>
+              <option value="Education">Education</option>
+              <option value="Cooking/Baking">Cooking/Baking</option>
+              <option value="Manual Labor">Manual Labor</option>
             </select>
           </div>
 

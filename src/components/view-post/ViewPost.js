@@ -7,7 +7,12 @@ function ViewPost() {
   const { requestId } = useParams();  // Capture requestId from URL
   const [postData, setPostData] = useState(null);
   const [authorName, setAuthorName] = useState(null);
-
+  
+  // Modal state and form fields
+  const [showModal, setShowModal] = useState(false);
+  const [offerText, setOfferText] = useState('');
+  const [serviceType, setServiceType] = useState('');
+  
   const fetchData = async () => {
     try {
       // Fetch post data
@@ -34,9 +39,25 @@ function ViewPost() {
     }
   };
 
+  const handleMakeOfferClick = () => {
+    setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  const handleOfferSubmit = (e) => {
+    e.preventDefault();
+    // Handle the offer submission logic here
+    console.log("Offer Submitted:", offerText, serviceType);
+    // Close the modal after submission
+    setShowModal(false);
+  };
+
   useEffect(() => {
-      fetchData();
-    }, [requestId]);
+    fetchData();
+  }, [requestId]);
   
   if (!postData) {
     return <div>Loading...</div>;
@@ -62,7 +83,53 @@ function ViewPost() {
         <h3 className="section-header">Estimated Monetary Value:</h3>
         <div className="monetary-value">${postData.expectedValue}</div>
 
-        <button className="submit-btn">Make an Offer</button>
+        <button className="submit-btn" onClick={handleMakeOfferClick}>
+          Make an Offer
+        </button>
+
+        {/* Modal for Making Offer */}
+        {showModal && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <span className="modal-close" onClick={handleModalClose}>×</span>
+              <h3>Make an Offer</h3>
+              <form onSubmit={handleOfferSubmit}>
+                <div>
+                  <label htmlFor="offerText">Offer Description:</label>
+                  <textarea
+                    id="offerText"
+                    value={offerText}
+                    onChange={(e) => setOfferText(e.target.value)}
+                    placeholder="Describe your offer..."
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="serviceType">Type of Service:</label>
+                  <select
+                    id="serviceType"
+                    value={serviceType}
+                    onChange={(e) => setServiceType(e.target.value)}
+                    required
+                  >
+                    <option value="">Select a service type</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="Art">Art</option>
+                    <option value="Fiber Arts">Fiber Arts</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="Pets">Pets</option>
+                    <option value="Education">Education</option>
+                    <option value="Cooking/Baking">Cooking/Baking</option>
+                    <option value="Manual Labor">Manual Labor</option>
+                  </select>
+                </div>
+                <div className="modal-actions">
+                  <button type="submit" className="submit-btn">Submit Offer</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

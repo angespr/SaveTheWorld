@@ -16,7 +16,10 @@ function Requests({ header, endpoint, toggleable = false, isMine = false }) {
       }
       const data = await response.json();
 
-      const filteredRequests = data.filter(req => req.userId !== userId);
+      // If isMine is false, filter out requests made by the current user
+      const filteredRequests = isMine
+        ? data
+        : data.filter(req => req.userId !== userId);
 
       const mappedRequests = filteredRequests.map(req => ({
         id: req.id,
@@ -32,7 +35,7 @@ function Requests({ header, endpoint, toggleable = false, isMine = false }) {
 
   useEffect(() => {
     fetchRequests();
-  }, [userId]);
+  }, [userId, isMine, endpoint]);
 
   const handleToggle = () => {
     setVisible(prev => !prev);
