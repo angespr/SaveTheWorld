@@ -5,16 +5,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 
 function CreateRequest() {
-  /* form states */
   const [requestTitle, setRequestTitle] = useState('');
   const [requestDescription, setRequestDescription] = useState('');
   const [exchangeOffer, setExchangeOffer] = useState('');
   const [requestCategory, setRequestCategory] = useState('General');
   const [expectedValue, setExpectedValue] = useState('');
-  const [images, setImages] = useState([]);
-
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
-
   const userId = getUserIdFromToken();
 
   if (!userId) {
@@ -22,52 +19,66 @@ function CreateRequest() {
     return null;
   }
 
-  /* image upload */
   const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    setImages(files);
+    const file = e.target.files[0];
+    setImage(file);
   };
 
-  /* form submit */
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const payload = {
-      title: requestTitle,
-      requestDescription: requestDescription,
-      offerDescription: exchangeOffer,
-      expectedValue: parseFloat(expectedValue) || 0,
-      category: requestCategory,
-      userId: userId
-    };
-
+  
     try {
-      const response = await fetch('http://localhost:8080/api/requests', {
+      const formData = new FormData();
+      formData.append('file', image);
+      formData.append('upload_preset', 'JuvoImages');
+      formData.append('folder', 'juvo/requests');
+
+      const response = await fetch('https://api.cloudinary.com/v1_1/dg1dhp4g3/image/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      const uploadedImageUrl = data.secure_url;
+
+      console.log("uploaded image url", uploadedImageUrl);
+  
+      const payload = {
+        title: requestTitle,
+        requestDescription: requestDescription,
+        offerDescription: exchangeOffer,
+        expectedValue: parseFloat(expectedValue) || 0,
+        category: requestCategory,
+        userId: userId,
+        imageUrl: uploadedImageUrl,
+      };
+
+      console.log("payload", payload);
+      
+      const postResponse = await fetch('http://localhost:8080/api/requests', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
       });
-
-      if (response.ok) {
-        const message = await response.text();
+  
+      if (postResponse.ok) {
+        const message = await postResponse.text();
         alert("Listing posted successfully! 🎉");
         console.log(message);
-
-        // Reset form
+  
         setRequestTitle('');
         setRequestDescription('');
         setExchangeOffer('');
         setRequestCategory('General');
         setExpectedValue('');
-        setImages([]);
+        setImage('');
 
-        // Redirect to homepage
         navigate('/');
       } else {
         alert("Failed to post listing ❌");
-        console.error(await response.text());
+        console.error(await postResponse.text());
       }
     } catch (err) {
       console.error("Error posting listing:", err);
@@ -143,23 +154,21 @@ function CreateRequest() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="images">Add image(s) of your service:</label>
+            <label htmlFor="images">Add an image of your service:</label>
             <input
               type="file"
               id="images"
-              multiple
               accept="image/*"
               onChange={handleImageChange}
             />
             <div className="image-preview-container">
-              {images.map((image, index) => (
+              {image && (
                 <img
-                  key={index}
                   src={URL.createObjectURL(image)}
-                  alt={`preview ${index}`}
+                  alt="Preview"
                   className="image-preview"
                 />
-              ))}
+              )}
             </div>
           </div>
 

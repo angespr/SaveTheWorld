@@ -18,6 +18,9 @@ public class TradeRequest {
     @NotBlank
     private String offerDescription;
 
+    @NotBlank
+    private String imageUrl;
+
     private double expectedValue;
 
     private String category;
@@ -29,7 +32,7 @@ public class TradeRequest {
     // Constructors
     public TradeRequest() {}
 
-    public TradeRequest(String title, String requestDescription, String offerDescription, double expectedValue, String category, String userId) {
+    public TradeRequest(String title, String requestDescription, String offerDescription, double expectedValue, String category, String userId, String imageUrl) {
         this.title = title;
         this.requestDescription = requestDescription;
         this.offerDescription = offerDescription;
@@ -37,6 +40,7 @@ public class TradeRequest {
         this.category = category;
         this.userId = userId;
         this.isActive = true; // Default to active
+        this.imageUrl = imageUrl;
     }
 
     // Getters and Setters
@@ -102,5 +106,13 @@ public class TradeRequest {
     
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
