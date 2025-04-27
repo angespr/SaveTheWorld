@@ -3,26 +3,26 @@ import Header from '../Header';
 import React, { useState } from 'react';
 
 function ViewPost() {
-  // find images for this!!
+  /* gallery images for the post */
   const [galleryImages, setGalleryImages] = useState([
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
+    '/test_hair1.jpg',
+    '/test_hair2.jpg',
+    '/test_hair3.jpg',
   ]);
 
   return (
     <div className="view-post">
       <Header />
       <div className="view-post-container">
-        <h2 className="post-title">Request Title</h2>
+        <h2 className="post-title">Need tutoring service for my child</h2>
         <p className="post-description">
-          This is the description of the request. It explains what the requester is asking for in detail.
+          Hello! I'm a single mother and need tutoring services for my 6-year-old son. He's been having trouble with his reading comprehension and I'm just too busy with other work to help him...
         </p>
-        <p className="post-user">by USER</p>
+        <p className="post-user">by Jennifer</p>
 
         <h3 className="section-header">My Offer:</h3>
         <p className="offer-description">
-          This is the description of the service or product the user is offering in return.
+        I'm a full-time hairdresser and specialize in highlights and layered cuts! I have a base price for a haircut and how long they'll take, as well as charge extra for coloring.
         </p>
 
         <h3 className="section-header">Gallery:</h3>
@@ -36,7 +36,7 @@ function ViewPost() {
         <div className="category-tag">Beauty</div>
 
         <h3 className="section-header">Estimated Monetary Value:</h3>
-        <div className="monetary-value">$50</div>
+        <div className="monetary-value">$40</div>
 
         <button className="submit-btn">Make an Offer</button>
       </div>
