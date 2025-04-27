@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/juvo/static/css/main.70443ffa.css",
-    "main.js": "/juvo/static/js/main.d01efed7.js",
+    "main.js": "/juvo/static/js/main.02ab12c1.js",
     "static/js/453.ad8e3055.chunk.js": "/juvo/static/js/453.ad8e3055.chunk.js",
     "static/media/profile.png": "/juvo/static/media/profile.3cd9049eca1577530995.png",
     "static/media/logo.png": "/juvo/static/media/logo.c1a0da0f44ea1319dd3b.png",
     "index.html": "/juvo/index.html",
     "main.70443ffa.css.map": "/juvo/static/css/main.70443ffa.css.map",
-    "main.d01efed7.js.map": "/juvo/static/js/main.d01efed7.js.map",
+    "main.02ab12c1.js.map": "/juvo/static/js/main.02ab12c1.js.map",
     "453.ad8e3055.chunk.js.map": "/juvo/static/js/453.ad8e3055.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.70443ffa.css",
-    "static/js/main.d01efed7.js"
+    "static/js/main.02ab12c1.js"
   ]
 }
