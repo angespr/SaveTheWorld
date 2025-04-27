@@ -16,7 +16,7 @@ function Requests({ header, endpoint, toggleable = false, isMine = false }) {
   
       const mappedRequests = data.map(req => ({
         id: req.id,
-        image: req.imageUrl,
+        imageUrl: req.imageUrl,
         title: req.title
       }));
       setRequests(mappedRequests);
@@ -50,7 +50,7 @@ function Requests({ header, endpoint, toggleable = false, isMine = false }) {
           {requests.map(item => (
             <Thumbnail
               requestId={item.id}
-              image={item.image}
+              image={item.imageUrl}
               title={item.title}
               isMine={isMine}
             />

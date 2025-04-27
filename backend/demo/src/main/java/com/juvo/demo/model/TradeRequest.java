@@ -1,5 +1,7 @@
 package com.juvo.demo.model;
 
+import java.sql.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.*;
@@ -18,6 +20,9 @@ public class TradeRequest {
     @NotBlank
     private String offerDescription;
 
+    @NotBlank
+    private String imageUrl;
+
     private double expectedValue;
 
     private String category;
@@ -26,10 +31,12 @@ public class TradeRequest {
 
     private Boolean isActive;
 
+    private Date lastUpdated;
+
     // Constructors
     public TradeRequest() {}
 
-    public TradeRequest(String title, String requestDescription, String offerDescription, double expectedValue, String category, String userId) {
+    public TradeRequest(String title, String requestDescription, String offerDescription, double expectedValue, String category, String userId, String imageUrl) {
         this.title = title;
         this.requestDescription = requestDescription;
         this.offerDescription = offerDescription;
@@ -37,6 +44,8 @@ public class TradeRequest {
         this.category = category;
         this.userId = userId;
         this.isActive = true; // Default to active
+        this.imageUrl = imageUrl;
+        this.lastUpdated = new Date(System.currentTimeMillis());
     }
 
     // Getters and Setters
@@ -102,5 +111,21 @@ public class TradeRequest {
     
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = new Date(System.currentTimeMillis());
+    }
+
+    public Date getCreatedAt() {
+        return lastUpdated;
     }
 }

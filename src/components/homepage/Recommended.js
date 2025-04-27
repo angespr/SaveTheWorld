@@ -32,7 +32,7 @@ function Recommended() {
         {recommendedItems.map(item => (
           <Thumbnail
             requestId={item.id}
-            image={item.image}
+            image={item.imageUrl}
             title={item.title}
           />
         ))}
