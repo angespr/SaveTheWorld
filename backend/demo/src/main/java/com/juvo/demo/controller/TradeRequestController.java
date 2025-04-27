@@ -20,7 +20,6 @@ public class TradeRequestController {
     @PostMapping
     public String createRequest(@Valid @RequestBody TradeRequest request) {
         request.setIsActive(true);
-        request.setLastUpdated(new java.sql.Date(System.currentTimeMillis()));
         requestRepo.save(request);
         return "Trade request posted!";
     }
@@ -72,7 +71,6 @@ public class TradeRequestController {
             existingRequest.setOfferDescription(updatedRequest.getOfferDescription());
             existingRequest.setCategory(updatedRequest.getCategory());
             existingRequest.setExpectedValue(updatedRequest.getExpectedValue());
-            existingRequest.setLastUpdated(new java.sql.Date(System.currentTimeMillis()));
 
             // Save the updated request
             requestRepo.save(existingRequest);
@@ -102,7 +100,6 @@ public class TradeRequestController {
         if (requestOptional.isPresent()) {
             TradeRequest request = requestOptional.get();
             request.setIsActive(false);
-            request.setLastUpdated(new java.sql.Date(System.currentTimeMillis()));
             requestRepo.save(request);
             return ResponseEntity.ok("Request marked as completed.");
         } else {
@@ -117,7 +114,6 @@ public class TradeRequestController {
         if (requestOptional.isPresent()) {
             TradeRequest request = requestOptional.get();
             request.setIsActive(true);
-            request.setLastUpdated(new java.sql.Date(System.currentTimeMillis()));
             requestRepo.save(request);
             return ResponseEntity.ok("Request marked as completed.");
         } else {
